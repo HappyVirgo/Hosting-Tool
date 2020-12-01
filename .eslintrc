@@ -1,0 +1,84 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "airbnb",
+        "prettier",
+        "react-app",
+        "plugin:prettier/recommended"
+    ],
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "printWidth": 100,
+                "singleQuote": false,
+                "tabWidth": 4,
+                "bracketSpacing": false,
+                "trailingComma": "none",
+                "arrowParens": "avoid"
+            }
+        ],
+        "jsx-a11y/href-no-hash": [0],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [".js", ".jsx"]
+            }
+        ],
+        "quotes": [1, "double"],
+        "comma-dangle": "off",
+        "object-curly-spacing": ["error", "never"],
+        "no-underscore-dangle": [
+            "warn",
+            { "allow": ["_id", "_offset", "_intents", "__v", "__id"] }
+        ],
+        "react/jsx-indent": ["warn", 4],
+        "react/jsx-indent-props": ["warn", 4],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "jsx-a11y/label-has-associated-control": [
+            "error",
+            {
+                "required": {
+                    "some": ["nesting", "id"]
+                }
+            }
+        ],
+        "jsx-a11y/label-has-for": [
+            "error",
+            {
+                "required": {
+                    "some": ["nesting", "id"]
+                }
+            }
+        ],
+        "max-len": [
+            "error",
+            500,
+            {
+                "ignoreComments": true,
+                "ignoreTrailingComments": true,
+                "ignoreUrls": true,
+                "ignoreStrings": true
+            }
+        ],
+        "no-await-in-loop": "off",
+        "no-shadow": "off",
+        "consistent-return": "off",
+        "no-param-reassign": "off",
+        "import/order": ["error", {"newlines-between": "always"}],
+        "react/jsx-curly-newline": "off"
+    },
+    "overrides": [
+        {
+            "files": [ "*.jsx" ],
+            "rules": {
+                "no-console": ["warn", { "allow": ["warn", "error"] }]
+            }
+        }
+    ]
+}

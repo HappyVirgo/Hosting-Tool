@@ -1,0 +1,38 @@
+.react-select .react-select__menu {
+    border-radius: 0;
+}
+
+.react-select .react-select__menu-list {
+    padding: 0;
+}
+
+.react-select .react-select__control {
+    border: 1px solid #ced4da;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.react-select .react-select__control:hover {
+    border-color: #969dab;
+}
+
+.react-select.is-invalid .react-select__control,
+.react-select.is-invalid .react-select__control:hover {
+    border-color: #dc3545;
+}
+
+.react-select .react-select__group {
+    padding: 0;
+}
+
+.react-select .react-select__group .react-select__group-heading {
+    padding: 12px;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.react-select .react-select__group .react-select__group-heading div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
