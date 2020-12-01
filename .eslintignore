@@ -1,0 +1,10 @@
+src/admin/aziadashboard
+src/front/Parker
+notes
+artwork
+dist
+node_modules
+src/push-receiver
+
+# Optional eslint cache
+.eslintcache
