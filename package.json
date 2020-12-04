@@ -4,7 +4,8 @@
     "private": true,
     "main": "server.js",
     "scripts": {
-        "start": "react-scripts start"
+        "start": "react-scripts start",
+        "test": "react-scripts test"
     },
     "browserslist": [
         ">0.2%",
@@ -62,6 +63,8 @@
         "@babel/polyfill": "^7.12.1",
         "@babel/preset-env": "^7.12.1",
         "@babel/preset-react": "^7.12.7",
+        "@testing-library/jest-dom": "^5.11.6",
+        "@testing-library/react": "^11.2.2",
         "@typescript-eslint/eslint-plugin": "^3.10.1",
         "@typescript-eslint/parser": "^3.10.1",
         "babel-eslint": "^10.1.0",

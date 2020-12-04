@@ -105,7 +105,7 @@ class ContactForm extends Component {
             "is-invalid": errors.message
         });
         return (
-            <form id="contact-form" onSubmit={this.submitForm} noValidate>
+            <form id="contact-form" name="Contact Form" onSubmit={this.submitForm} noValidate>
                 <div className="messages" />
                 <div className="controls">
                     <div className="row">
