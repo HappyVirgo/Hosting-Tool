@@ -94,4 +94,45 @@ describe('ContactForm', () => {
         expect(screen.queryByText('Please enter a valid email.')).not.toBeInTheDocument();
         expect(screen.queryByText('Please include me a message.')).not.toBeInTheDocument();
     })
+
+    it('Does not make fetch call for incomplete form', () => {
+        render(<ContactForm />);
+
+        jest.spyOn(window, 'fetch')
+
+        fireEvent.change(screen.getByLabelText('Name'), {target: {value: 'Test Name'}});
+        fireEvent.change(screen.getByLabelText('Email'), {target: {value: 'testing@gmail.com'}});
+
+        fireEvent.click(screen.getByText('Send Message'));
+
+        expect(window.fetch).toHaveBeenCalledTimes(0)
+    })
+
+    it('Makes fetch call for completed form', () => {
+        render(<ContactForm />);
+
+        jest.spyOn(window, 'fetch')
+        window.fetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => ({success: true}),
+        });
+
+        let testName = 'Test Name';
+        let testEmail = 'testing@gmail.com';
+        let testMessage = 'Test Message';
+        fireEvent.change(screen.getByLabelText('Name'), {target: {value: testName}});
+        fireEvent.change(screen.getByLabelText('Email'), {target: {value: testEmail}});
+        fireEvent.change(screen.getByLabelText('Message'), {target: {value: testMessage}});
+
+        fireEvent.click(screen.getByText('Send Message'));
+
+        expect(window.fetch).toHaveBeenCalledTimes(1)
+        expect(window.fetch).toHaveBeenCalledWith(
+            '/contactUs',
+            expect.objectContaining({
+                method: 'POST',
+                body: JSON.stringify({name: testName, email: testEmail, message: testMessage}),
+            }),
+        )
+    })
 })
