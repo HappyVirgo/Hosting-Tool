@@ -478,7 +478,7 @@ function AddAirbnbAccount(props) {
     });
     if (!addAccountVerificationMethods) {
         return (
-            <form>
+            <form name={"Airbnb Login Form"}>
                 <Modal.Header closeButton={!hideCloseButtons}>
                     <Modal.Title>Link Airbnb Account</Modal.Title>
                 </Modal.Header>
@@ -642,7 +642,7 @@ function AddAirbnbAccount(props) {
     }
     if (addAccountVerificationMethods && !addAccountVerificationCodeSent) {
         return (
-            <form>
+            <form name={"Airbnb Verification Form"}>
                 <Modal.Header closeButton>
                     <Modal.Title>Verify Airbnb Account</Modal.Title>
                 </Modal.Header>
