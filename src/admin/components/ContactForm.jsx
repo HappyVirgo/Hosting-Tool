@@ -105,19 +105,19 @@ class ContactForm extends Component {
             "is-invalid": errors.message
         });
         return (
-            <form id="contact-form" onSubmit={this.submitForm} noValidate>
+            <form id="contact-form" name="Contact Form" onSubmit={this.submitForm} noValidate>
                 <div className="messages" />
                 <div className="controls">
                     <div className="row">
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label htmlFor="form_name">Name</label>
+                                <label htmlFor="name">Name</label>
                                 <input
                                     type="text"
                                     name="name"
                                     className={nameClasses}
                                     id="name"
-                                    value={fields.name}
+                                    defaultValue={fields.name}
                                     onChange={this.handleChange}
                                 />
                                 {errors.name && (
@@ -127,13 +127,13 @@ class ContactForm extends Component {
                         </div>
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label htmlFor="form_email">Email</label>
+                                <label htmlFor="email">Email</label>
                                 <input
                                     type="text"
                                     name="email"
                                     className={emailClasses}
                                     id="email"
-                                    value={fields.email}
+                                    defaultValue={fields.email}
                                     onChange={this.handleChange}
                                 />
                                 <div className="help-block with-errors" />
@@ -146,13 +146,13 @@ class ContactForm extends Component {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-                                <label htmlFor="form_message">Message</label>
+                                <label htmlFor="message">Message</label>
                                 <textarea
                                     id="message"
                                     name="message"
                                     className={messageClasses}
                                     rows="4"
-                                    value={fields.message}
+                                    defaultValue={fields.message}
                                     onChange={this.handleChange}
                                 />
                             </div>
