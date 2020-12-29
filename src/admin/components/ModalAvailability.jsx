@@ -101,6 +101,7 @@ function ModalAvailability(props) {
                             type="checkbox"
                             className="custom-control-input"
                             id="blocked"
+                            data-testid="blocked-checkbox"
                             checked={blocked === true}
                             onChange={() => {
                                 handleToggle("blocked");
