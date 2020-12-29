@@ -14,5 +14,7 @@
         "superhosttools",
         "timedout",
         "vrbo"
-    ]
+    ],
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": true
 }
