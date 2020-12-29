@@ -4,7 +4,7 @@ module.exports = app => {
     app.use(
         "/",
         createProxyMiddleware({
-            target: "https://hosttools.com",
+            target: "https://app.hosttools.com",
             changeOrigin: true
         })
     );
