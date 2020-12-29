@@ -1,0 +1,623 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalAddAccount should show modal link Airbnb 1`] = `
+<body
+  class="modal-open"
+  style="padding-right: 0px;"
+>
+  <div
+    aria-hidden="true"
+  />
+  <div
+    class="fade modal-backdrop show"
+  />
+  <div
+    aria-modal="true"
+    class="fade modal show"
+    role="dialog"
+    style="display: block;"
+    tabindex="-1"
+  >
+    <div
+      class="modal-dialog"
+      role="document"
+    >
+      <div
+        class="modal-content"
+      >
+        <form>
+          <div
+            class="modal-header"
+          >
+            <div
+              class="modal-title h4"
+            >
+              Link Airbnb Account
+            </div>
+            <button
+              class="close"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+              <span
+                class="sr-only"
+              >
+                Close
+              </span>
+            </button>
+          </div>
+          <div
+            class="pd-20 pd-sm-40 modal-body"
+          >
+            <p>
+              Host Tools will request an authentication token that will be used to automatically send messages to your guests or set your listing's prices on your behalf. It will only send messages you tell it to send and will never make any changes to your account without your permission.
+            </p>
+            <p>
+              All network traffic is encrypted on Host Tools and all data is stored using the latest compliance standards.
+            </p>
+            <div
+              class="pd-md-20"
+            >
+              <div
+                class="mg-b-20 d-flex justify-content-start align-items-center"
+              >
+                <img
+                  alt="Airbnb"
+                  class="rounded-circle mg-r-20"
+                  height="65"
+                  src="airbnb-logo-solid-square.svg"
+                />
+                <div>
+                  <h2
+                    class="mg-b-0"
+                  >
+                    Airbnb Account
+                  </h2>
+                  <span
+                    class="text-muted text-uppercase tx-11"
+                  >
+                    Link your account with Airbnb credentials
+                  </span>
+                </div>
+              </div>
+              <div
+                class="form-group"
+              >
+                <label
+                  class="az-content-label tx-11 tx-medium tx-gray-600"
+                  for="airbnbUsername"
+                >
+                  Airbnb Email
+                  <svg
+                    class="text-muted ml-1"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                    />
+                    <path
+                      d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"
+                    />
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="17"
+                      y2="17"
+                    />
+                  </svg>
+                </label>
+                <input
+                  autocomplete="off"
+                  class="form-control"
+                  id="airbnbUsername"
+                  name="airbnbUsername"
+                  placeholder="Airbnb Email..."
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="form-group"
+              >
+                <label
+                  class="az-content-label tx-11 tx-medium tx-gray-600"
+                  for="airbnbPassword"
+                >
+                  Airbnb Password
+                  <svg
+                    class="text-muted ml-1"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                    />
+                    <path
+                      d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"
+                    />
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="17"
+                      y2="17"
+                    />
+                  </svg>
+                </label>
+                <input
+                  autocomplete="off"
+                  class="form-control"
+                  id="airbnbPassword"
+                  name="airbnbPassword"
+                  placeholder="Airbnb Password..."
+                  required=""
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="alert alert-info"
+            >
+              Do you use Google or Facebook to log into your Airbnb account? To connect an Airbnb property with Host Tools, you'll need to first 
+              <a
+                href="https://www.airbnb.com/help/article/76/how-do-i-reset-my-password"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                create a password
+              </a>
+               for your Airbnb account.
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="btn btn-outline-dark"
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+            >
+              Add Account
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`ModalAddAccount should show modal link August 1`] = `
+<body
+  class="modal-open"
+  style="padding-right: 0px;"
+>
+  <div
+    aria-hidden="true"
+  />
+  <div
+    class="fade modal-backdrop show"
+  />
+  <div
+    aria-modal="true"
+    class="fade modal show"
+    role="dialog"
+    style="display: block;"
+    tabindex="-1"
+  >
+    <div
+      class="modal-dialog"
+      role="document"
+    >
+      <div
+        class="modal-content"
+      >
+        <form>
+          <div
+            class="modal-header"
+          >
+            <div
+              class="modal-title h4"
+            >
+              Link August Account
+            </div>
+            <button
+              class="close"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+              <span
+                class="sr-only"
+              >
+                Close
+              </span>
+            </button>
+          </div>
+          <div
+            class="pd-20 pd-sm-40 modal-body"
+          >
+            <p>
+              Host Tools will request an authentication token that will be used to automatically send messages to your guests or set your listing's prices on your behalf. It will only send messages you tell it to send and will never make any changes to your account without your permission.
+            </p>
+            <p>
+              All network traffic is encrypted on Host Tools and all data is stored using the latest compliance standards.
+            </p>
+            <div
+              class="pd-md-20"
+            >
+              <div
+                class="mg-b-20 d-flex justify-content-start align-items-center"
+              >
+                <img
+                  alt="August Smart Locks"
+                  class="rounded-circle mg-r-20"
+                  height="65"
+                  src="august-logo-solid-square.svg"
+                />
+                <div>
+                  <h2
+                    class="mg-b-0"
+                  >
+                    August Account
+                  </h2>
+                  <span
+                    class="text-muted text-uppercase tx-11"
+                  >
+                    Link your account with August credentials
+                  </span>
+                </div>
+              </div>
+              <div
+                class="form-group"
+              >
+                <label
+                  class="az-content-label tx-11 tx-medium tx-gray-600"
+                  for="username"
+                >
+                  August Email
+                  <svg
+                    class="text-muted ml-1"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                    />
+                    <path
+                      d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"
+                    />
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="17"
+                      y2="17"
+                    />
+                  </svg>
+                </label>
+                <input
+                  autocomplete="off"
+                  class="form-control"
+                  id="username"
+                  name="username"
+                  placeholder="August Email..."
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="form-group"
+              >
+                <label
+                  class="az-content-label tx-11 tx-medium tx-gray-600"
+                  for="password"
+                >
+                  August Password
+                  <svg
+                    class="text-muted ml-1"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                    />
+                    <path
+                      d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"
+                    />
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="17"
+                      y2="17"
+                    />
+                  </svg>
+                </label>
+                <input
+                  autocomplete="off"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="August Password..."
+                  required=""
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="btn btn-outline-dark"
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+            >
+              Add Account
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`ModalAddAccount should show modal link HomeAway 1`] = `
+<body
+  class="modal-open"
+  style="padding-right: 0px;"
+>
+  <div
+    aria-hidden="true"
+  />
+  <div
+    class="fade modal-backdrop show"
+  />
+  <div
+    aria-modal="true"
+    class="fade modal show"
+    role="dialog"
+    style="display: block;"
+    tabindex="-1"
+  >
+    <div
+      class="modal-dialog"
+      role="document"
+    >
+      <div
+        class="modal-content"
+      >
+        <form>
+          <div
+            class="modal-header"
+          >
+            <div
+              class="modal-title h4"
+            >
+              Link VRBO Account
+            </div>
+            <button
+              class="close"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+              <span
+                class="sr-only"
+              >
+                Close
+              </span>
+            </button>
+          </div>
+          <div
+            class="pd-20 pd-sm-40 modal-body"
+          >
+            <p>
+              Host Tools will request an authentication token that will be used to automatically send messages to your guests or set your listing's prices on your behalf. It will only send messages you tell it to send and will never make any changes to your account without your permission.
+            </p>
+            <p>
+              All network traffic is encrypted on Host Tools and all data is stored using the latest compliance standards.
+            </p>
+            <div
+              class="pd-md-20"
+            >
+              <div
+                class="mg-b-20 d-flex justify-content-start align-items-center"
+              >
+                <img
+                  alt="VRBO"
+                  class="rounded-circle mg-r-20"
+                  height="65"
+                  src="vrbo-logo-solid-square.svg"
+                />
+                <div>
+                  <h2
+                    class="mg-b-0"
+                  >
+                    VRBO Account
+                  </h2>
+                  <span
+                    class="text-muted text-uppercase tx-11"
+                  >
+                    Link your account with VRBO credentials
+                  </span>
+                </div>
+              </div>
+              <div
+                class="form-group"
+              >
+                <label
+                  class="az-content-label tx-11 tx-medium tx-gray-600"
+                  for="username"
+                >
+                  VRBO Email
+                  <svg
+                    class="text-muted ml-1"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                    />
+                    <path
+                      d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"
+                    />
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="17"
+                      y2="17"
+                    />
+                  </svg>
+                </label>
+                <input
+                  autocomplete="off"
+                  class="form-control"
+                  id="username"
+                  name="username"
+                  placeholder="VRBO Email..."
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="form-group"
+              >
+                <label
+                  class="az-content-label tx-11 tx-medium tx-gray-600"
+                  for="password"
+                >
+                  VRBO Password
+                  <svg
+                    class="text-muted ml-1"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                    />
+                    <path
+                      d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"
+                    />
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="17"
+                      y2="17"
+                    />
+                  </svg>
+                </label>
+                <input
+                  autocomplete="off"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="VRBO Password..."
+                  required=""
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="btn btn-outline-dark"
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+            >
+              Add Account
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+`;
