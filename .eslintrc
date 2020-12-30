@@ -71,7 +71,13 @@
         "consistent-return": "off",
         "no-param-reassign": "off",
         "import/order": ["error", {"newlines-between": "always"}],
-        "react/jsx-curly-newline": "off"
+        "react/jsx-curly-newline": "off",
+        "import/no-unresolved": [
+            "error",
+            {
+              "ignore": [ "@/" ]
+            }
+          ]
     },
     "overrides": [
         {

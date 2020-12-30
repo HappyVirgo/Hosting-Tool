@@ -1,125 +1,124 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-
+import {render, screen, fireEvent, waitFor} from "@testing-library/react";
 import ModalAvailability from "@/admin/components/ModalAvailability";
 
 jest.mock("date-fns-tz", () => ({
-  __esModule: true,
-  zonedTimeToUtc: (date) => {
-    return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
-  },
+    __esModule: true,
+    zonedTimeToUtc: date => {
+        return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+    }
 }));
 
-const setup = (overrides) => {
-  const props = {
-    show: true,
-    listing: {
-      airbnbTimeZone: "America/Los_Angeles",
-    },
-    selectedDates: {
-      startDate: new Date("12/29/2020"),
-      endDate: new Date("12/30/2020"),
-    },
-    onHide: jest.fn(),
+const setup = overrides => {
+    const props = {
+        show: true,
+        listing: {
+            airbnbTimeZone: "America/Los_Angeles"
+        },
+        selectedDates: {
+            startDate: new Date("12/29/2020"),
+            endDate: new Date("12/30/2020")
+        },
+        onHide: jest.fn(),
 
-    ...overrides,
-  };
+        ...overrides
+    };
 
-  const wrapper = render(<ModalAvailability {...props} />);
+    const wrapper = render(<ModalAvailability {...props} />);
 
-  return {
-    wrapper,
-    props,
-  };
+    return {
+        wrapper,
+        props
+    };
 };
 
 const doClickSave = () => {
-  fireEvent.click(
-    screen.getByText("Save", {
-      selector: "button",
-    })
-  );
+    fireEvent.click(
+        screen.getByText("Save", {
+            selector: "button"
+        })
+    );
 };
 
 describe("ModalAvailability", () => {
-  test("should show the correct modal info with same months", () => {
-    setup();
+    test("should show the correct modal info with same months", () => {
+        setup();
 
-    expect(screen.queryByText("Dec 29th - 30th")).toBeInTheDocument();
-    expect(screen.queryByText("Available")).toBeInTheDocument();
-  });
-
-  test("should show the correct modal info with different months", () => {
-    setup({
-      selectedDates: {
-        startDate: new Date("11/29/2020"),
-        endDate: new Date("12/30/2020"),
-      },
+        expect(screen.queryByText("Dec 29th - 30th")).toBeInTheDocument();
+        expect(screen.queryByText("Available")).toBeInTheDocument();
     });
 
-    expect(screen.queryByText("Nov 29th - Dec 30th")).toBeInTheDocument();
-  });
+    test("should show the correct modal info with different months", () => {
+        setup({
+            selectedDates: {
+                startDate: new Date("11/29/2020"),
+                endDate: new Date("12/30/2020")
+            }
+        });
 
-  test("should disable to submit", () => {
-    const { props } = setup({
-      selectedDates: {
-        blocked: true,
-        startDate: new Date("12/29/2020"),
-        endDate: new Date("12/30/2020"),
-      },
+        expect(screen.queryByText("Nov 29th - Dec 30th")).toBeInTheDocument();
     });
 
-    doClickSave();
+    test("should disable to submit", () => {
+        const {props} = setup({
+            selectedDates: {
+                blocked: true,
+                startDate: new Date("12/29/2020"),
+                endDate: new Date("12/30/2020")
+            }
+        });
 
-    expect(props.onHide).toHaveBeenCalled();
-  });
+        doClickSave();
 
-  test("should submit successfully", async () => {
-    const { props } = setup();
-
-    global.fetch = jest.fn().mockResolvedValue({
-      ok: true,
-      json: jest.fn().mockResolvedValue({}),
+        expect(props.onHide).toHaveBeenCalled();
     });
 
-    fireEvent.click(screen.queryByTestId("blocked-checkbox"));
+    test("should submit successfully", async () => {
+        const {props} = setup();
 
-    expect(screen.getByLabelText("Block")).toBeInTheDocument();
+        global.fetch = jest.fn().mockResolvedValue({
+            ok: true,
+            json: jest.fn().mockResolvedValue({})
+        });
 
-    doClickSave();
+        fireEvent.click(screen.queryByTestId("blocked-checkbox"));
 
-    await jest.requireActual("promise").resolve();
+        expect(screen.getByLabelText("Block")).toBeInTheDocument();
 
-    expect(global.fetch).toHaveBeenCalledWith(
-      "/setAvailabilityRange",
-      expect.objectContaining({
-        body: JSON.stringify({
-          blocked: true,
-          dateRange: {
-            startDate: "29-12-2020",
-            endDate: "30-12-2020",
-          },
-        }),
-        method: "POST",
-      })
-    );
-    expect(props.onHide).toHaveBeenCalled();
-  });
+        doClickSave();
 
-  test("should fail to submit", async () => {
-    setup();
+        await jest.requireActual("promise").resolve();
 
-    const message = "something went wrong";
-
-    global.fetch = jest.fn().mockResolvedValue({
-      ok: false,
-      json: jest.fn().mockResolvedValue(message),
+        expect(global.fetch).toHaveBeenCalledWith(
+            "/setAvailabilityRange",
+            expect.objectContaining({
+                body: JSON.stringify({
+                    blocked: true,
+                    dateRange: {
+                        startDate: "29-12-2020",
+                        endDate: "30-12-2020"
+                    }
+                }),
+                method: "POST"
+            })
+        );
+        expect(props.onHide).toHaveBeenCalled();
     });
 
-    doClickSave();
+    test("should fail to submit", async () => {
+        setup();
 
-    await waitFor(() => screen.queryByText(message));
+        const message = "something went wrong";
 
-    expect(screen.queryByText(message)).toBeInTheDocument();
-  });
+        global.fetch = jest.fn().mockResolvedValue({
+            ok: false,
+            json: jest.fn().mockResolvedValue(message)
+        });
+
+        doClickSave();
+
+        await waitFor(() => screen.queryByText(message));
+
+        expect(screen.queryByText(message)).toBeInTheDocument();
+    });
 });
