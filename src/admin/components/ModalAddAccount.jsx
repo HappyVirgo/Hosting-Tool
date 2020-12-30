@@ -180,6 +180,7 @@ function ModalAddAccount(props) {
                                     <label className="ckbox">
                                         <input
                                             id="selectedChannelAirbnb"
+                                            data-testid="airbnb-checkbox"
                                             type="checkbox"
                                             checked={selectedChannel === "Airbnb"}
                                             onChange={() => {
@@ -190,6 +191,7 @@ function ModalAddAccount(props) {
                                     </label>
                                 </div>
                                 <div
+                                    data-testid="aribnb-logo-wrapper"
                                     className="col-8 d-flex justify-content-start align-items-center c-pointer"
                                     onClick={() => {
                                         handleToggle("Airbnb");
@@ -209,6 +211,7 @@ function ModalAddAccount(props) {
                                     <label className="ckbox">
                                         <input
                                             id="selectedChannelHomeAway"
+                                            data-testid="homeaway-checkbox"
                                             type="checkbox"
                                             checked={selectedChannel === "HomeAway"}
                                             onChange={() => {
@@ -219,6 +222,7 @@ function ModalAddAccount(props) {
                                     </label>
                                 </div>
                                 <div
+                                    data-testid="homeaway-logo-wrapper"
                                     className="col-8 d-flex justify-content-start align-items-center c-pointer"
                                     onClick={() => {
                                         handleToggle("HomeAway");
@@ -242,6 +246,7 @@ function ModalAddAccount(props) {
                             </button>
                         )}
                         <button
+                            data-testid="btn-next"
                             type="button"
                             className="btn btn-outline-primary"
                             onClick={selectChannel}
