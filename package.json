@@ -5,7 +5,8 @@
     "main": "server.js",
     "scripts": {
         "start": "react-scripts start",
-        "test": "react-scripts test"
+        "test": "react-scripts test",
+        "eslint": "eslint ./src --ext .js,.jsx --fix"
     },
     "browserslist": [
         ">0.2%",
