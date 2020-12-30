@@ -13,11 +13,6 @@
             "^@\/(.*)$": "<rootDir>/src/$1"
         }
     },
-    "jest": {
-        "moduleNameMapper": {
-            "^@\/(.*)$": "<rootDir>/src/$1"
-        }
-    },
     "browserslist": [
         ">0.2%",
         "not dead",
