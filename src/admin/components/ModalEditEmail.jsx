@@ -118,7 +118,7 @@ function ModalEditEmail(props) {
                         className="btn btn-outline-primary"
                         onClick={handleSubmit}
                     >
-                        {showSpinner && <FaCircleNotch className="fa-spin mr-1" />}
+                        {showSpinner && <FaCircleNotch data-testid="spinner" className="fa-spin mr-1" />}
                         Save
                     </button>
                 </Modal.Footer>

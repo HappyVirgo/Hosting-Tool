@@ -1,6 +1,7 @@
 import React from "react";
 import {render, screen, fireEvent} from "@testing-library/react";
-import ModalConfirm from "@/admin/components/ModalConfirm";
+
+import ModalConfirm from "../admin/components/ModalConfirm";
 
 const setup = overrides => {
     const props = {
