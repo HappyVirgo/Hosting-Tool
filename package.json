@@ -8,11 +8,6 @@
         "test": "react-scripts test",
         "eslint": "eslint ./src --ext .js,.jsx --fix"
     },
-    "jest": {
-        "moduleNameMapper": {
-            "^@\/(.*)$": "<rootDir>/src/$1"
-        }
-    },
     "browserslist": [
         ">0.2%",
         "not dead",

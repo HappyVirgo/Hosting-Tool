@@ -1,7 +1,8 @@
 import React from "react";
 import {render, screen} from "@testing-library/react";
-import ModalCreditCard from "@/admin/components/ModalCreditCard";
 import {MemoryRouter} from "react-router-dom";
+
+import ModalCreditCard from "../admin/components/ModalCreditCard";
 
 jest.mock("react-stripe-elements", () => ({
     ...jest.requireActual("react-stripe-elements"),

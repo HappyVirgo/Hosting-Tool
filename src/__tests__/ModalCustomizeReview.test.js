@@ -2,7 +2,7 @@ import React from "react";
 import {render, screen, fireEvent, waitForElementToBeRemoved} from "@testing-library/react";
 import {MemoryRouter} from "react-router-dom";
 
-import ModalCustomizeMessage from "../admin/components/ModalCustomizeMessage";
+import ModalCustomizeReview from "../admin/components/ModalCustomizeReview";
 
 jest.mock("../admin/providers/UserProvider", () => {
     const UserContext = jest.requireActual("react").createContext({
@@ -28,6 +28,7 @@ jest.mock("../admin/components/TextareaWithTags", () => ({
     default: props => (
         <>
             <label>{props.messages.default}</label>
+            <label>{props.error}</label>
             <input
                 data-testid="input-message"
                 aria-label="Input message"
@@ -37,7 +38,6 @@ jest.mock("../admin/components/TextareaWithTags", () => ({
                     props.onChange(e.target.value);
                 }}
             />
-            <label>{props.error}</label>
         </>
     )
 }));
@@ -45,7 +45,9 @@ jest.mock("../admin/components/TextareaWithTags", () => ({
 const setup = overrides => {
     const props = {
         show: false,
-        messageRuleMessage: "my message",
+        messageRuleReview: "my review",
+
+        onChange: jest.fn(),
         onHide: jest.fn(),
 
         ...overrides
@@ -53,7 +55,7 @@ const setup = overrides => {
 
     const wrapper = render(
         <MemoryRouter>
-            <ModalCustomizeMessage {...props} />
+            <ModalCustomizeReview {...props} />
         </MemoryRouter>
     );
 
@@ -63,17 +65,17 @@ const setup = overrides => {
     };
 };
 
-describe("ModalCustomizeMessage", () => {
+describe("ModalCustomizeReview", () => {
     test("should open the modal", () => {
         const {wrapper, props} = setup();
 
         wrapper.rerender(
             <MemoryRouter>
-                <ModalCustomizeMessage {...props} show />
+                <ModalCustomizeReview {...props} show />
             </MemoryRouter>
         );
 
-        expect(screen.queryByText("Customize Message")).toBeInTheDocument();
+        expect(screen.queryByText("Customize Review")).toBeInTheDocument();
     });
 
     test("should change the message successfully", () => {
@@ -81,7 +83,7 @@ describe("ModalCustomizeMessage", () => {
 
         wrapper.rerender(
             <MemoryRouter>
-                <ModalCustomizeMessage {...props} show />
+                <ModalCustomizeReview {...props} show />
             </MemoryRouter>
         );
 
@@ -98,7 +100,7 @@ describe("ModalCustomizeMessage", () => {
 
         wrapper.rerender(
             <MemoryRouter>
-                <ModalCustomizeMessage {...props} show />
+                <ModalCustomizeReview {...props} show />
             </MemoryRouter>
         );
 
@@ -116,11 +118,11 @@ describe("ModalCustomizeMessage", () => {
         expect(props.onHide).toHaveBeenCalled();
 
         expect(global.fetch).toHaveBeenCalledWith(
-            "/customizeMessage",
+            "/customizeReview",
             expect.objectContaining({
                 body: JSON.stringify({
-                    message: props.messageRuleMessage,
-                    messageRuleMessage: props.messageRuleMessage,
+                    review: props.messageRuleReview,
+                    messageRuleID: props.messageRuleReview,
                     messageRuleID: "",
                     airbnbUserID: "",
                     airbnbListingID: "",
@@ -136,7 +138,7 @@ describe("ModalCustomizeMessage", () => {
 
         wrapper.rerender(
             <MemoryRouter>
-                <ModalCustomizeMessage {...props} show />
+                <ModalCustomizeReview {...props} show />
             </MemoryRouter>
         );
 
@@ -155,7 +157,7 @@ describe("ModalCustomizeMessage", () => {
 
         wrapper.rerender(
             <MemoryRouter>
-                <ModalCustomizeMessage {...props} show />
+                <ModalCustomizeReview {...props} show />
             </MemoryRouter>
         );
 
@@ -166,17 +168,17 @@ describe("ModalCustomizeMessage", () => {
 
         fireEvent.click(screen.queryByText("Reset"));
 
-        expect(screen.queryByText(props.messageRuleMessage)).toBeInTheDocument();
+        expect(screen.queryByText(props.messageRuleReview)).toBeInTheDocument();
     });
 
     test("should doesn't allow to sumit empty thing", async () => {
         setup({
             show: true,
-            messageRuleMessage: ""
+            messageRuleReview: ""
         });
 
         fireEvent.click(screen.queryByText("Save"));
 
-        expect(screen.queryByText("You can't send a blank message.")).toBeInTheDocument();
+        expect(screen.queryByText("You can't send a blank review.")).toBeInTheDocument();
     });
 });
