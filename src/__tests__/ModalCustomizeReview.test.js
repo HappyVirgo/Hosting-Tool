@@ -27,8 +27,8 @@ jest.mock("../admin/components/TextareaWithTags", () => ({
     __esModule: true,
     default: props => (
         <>
-            <label>{props.messages.default}</label>
-            <label>{props.error}</label>
+            <div>{props.messages.default}</div>
+            <div>{props.error}</div>
             <input
                 data-testid="input-message"
                 aria-label="Input message"
@@ -122,7 +122,6 @@ describe("ModalCustomizeReview", () => {
             expect.objectContaining({
                 body: JSON.stringify({
                     review: props.messageRuleReview,
-                    messageRuleID: props.messageRuleReview,
                     messageRuleID: "",
                     airbnbUserID: "",
                     airbnbListingID: "",

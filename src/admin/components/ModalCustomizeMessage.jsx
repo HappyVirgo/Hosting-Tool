@@ -124,7 +124,9 @@ class ModalCustomizeMessage extends Component {
                             className="btn btn-outline-primary"
                             onClick={this.handleSubmit}
                         >
-                            {showSpinner && <FaCircleNotch data-testid="spinner" className="fa-spin mr-1" />}
+                            {showSpinner && (
+                                <FaCircleNotch data-testid="spinner" className="fa-spin mr-1" />
+                            )}
                             Save
                         </button>
                     </Modal.Footer>
