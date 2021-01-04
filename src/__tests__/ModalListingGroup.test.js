@@ -316,13 +316,13 @@ describe("ModalListingGroup", () => {
 
         wrapper.rerender(<ModalListingGroup {...props} show />);
 
-        expect(
-            screen.queryByText("No listings have been added to this group")
-        ).not.toBeInTheDocument();
+        const label = "No listings have been added to this group";
+
+        expect(screen.queryByText(label)).not.toBeInTheDocument();
 
         clickButton("remove-listing-2", true);
 
-        expect(screen.queryByText("No listings have been added to this group")).toBeInTheDocument();
+        expect(screen.queryByText(label)).toBeInTheDocument();
     });
 
     test("should validate group name", () => {
@@ -377,7 +377,7 @@ describe("ModalListingGroup", () => {
         );
     });
 
-    test("should fail to submit", () => {
+    test("should fail to submit", async () => {
         const {wrapper, props} = setup({
             listings: [],
             listingGroup: {
@@ -405,10 +405,10 @@ describe("ModalListingGroup", () => {
 
         clickButton("Save");
 
-        waitFor(() => expect(console.error).toHaveBeenCalled());
+        await waitFor(() => expect(console.error).toHaveBeenCalled());
     });
 
-    test("should reject to submit", () => {
+    test("should reject to submit", async () => {
         const {wrapper, props} = setup({
             listings: [],
             listingGroup: {
@@ -433,7 +433,7 @@ describe("ModalListingGroup", () => {
 
         clickButton("Save");
 
-        waitFor(() => expect(console.error).toHaveBeenCalled());
+        await waitFor(() => expect(console.error).toHaveBeenCalled());
     });
 
     test("should hide the modal", () => {
