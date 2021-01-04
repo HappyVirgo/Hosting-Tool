@@ -14,7 +14,12 @@ function ModalReservationDetails(props) {
     const [errors, setErrors] = useState({});
     const [showSpinner, setShowSpinner] = useState({});
 
-    const [reservationDetails, setReservationDetails] = useState({});
+    const [reservationDetails, setReservationDetails] = useState({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        preferredLocale: ""
+    });
 
     useEffect(() => {
         if (show) {
@@ -31,7 +36,9 @@ function ModalReservationDetails(props) {
 
     function handleReservationDetailsChange(field, value) {
         reservationDetails[field] = value;
-        setReservationDetails(reservationDetails);
+        setReservationDetails({
+            ...reservationDetails
+        });
     }
 
     async function submitReservationDetails() {
