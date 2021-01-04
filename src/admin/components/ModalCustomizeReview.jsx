@@ -18,7 +18,7 @@ class ModalCustomizeReview extends Component {
         this.handleReset = this.handleReset.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {show} = this.props;
         const nextShow = nextProps.show;
         if (nextShow && show !== nextShow) {

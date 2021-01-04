@@ -1,8 +1,8 @@
 import {screen, fireEvent} from "@testing-library/react";
 
-export const clickButton = (text = "Save") => {
+export const clickButton = (text = "Save", dataTestId = false) => {
     fireEvent.click(
-        screen.getByText(text, {
+        screen[dataTestId ? "getByTestId" : "getByText"](text, {
             selector: "button"
         })
     );
