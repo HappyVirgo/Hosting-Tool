@@ -27,7 +27,7 @@ jest.mock("../admin/components/TextareaWithTags", () => ({
     __esModule: true,
     default: props => (
         <>
-            <label>{props.messages.default}</label>
+            <div>{props.messages.default}</div>
             <input
                 data-testid="input-message"
                 aria-label="Input message"

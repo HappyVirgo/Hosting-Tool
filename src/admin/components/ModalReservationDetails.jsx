@@ -14,6 +14,7 @@ function ModalReservationDetails(props) {
     const [errors, setErrors] = useState({});
     const [showSpinner, setShowSpinner] = useState({});
 
+    // https://github.com/reactstrap/reactstrap/issues/570
     const [reservationDetails, setReservationDetails] = useState({
         firstName: "",
         lastName: "",
