@@ -1,5 +1,11 @@
 import React from "react";
-import {render, screen, fireEvent, waitForElementToBeRemoved} from "@testing-library/react";
+import {
+    render,
+    screen,
+    fireEvent,
+    waitForElementToBeRemoved,
+    waitFor
+} from "@testing-library/react";
 import {MemoryRouter} from "react-router-dom";
 
 import ModalCustomizeReview from "../admin/components/ModalCustomizeReview";
@@ -65,15 +71,18 @@ const setup = overrides => {
     };
 };
 
+const rerender = (wrapper, props) =>
+    wrapper.rerender(
+        <MemoryRouter>
+            <ModalCustomizeReview {...props} show />
+        </MemoryRouter>
+    );
+
 describe("ModalCustomizeReview", () => {
     test("should open the modal", () => {
         const {wrapper, props} = setup();
 
-        wrapper.rerender(
-            <MemoryRouter>
-                <ModalCustomizeReview {...props} show />
-            </MemoryRouter>
-        );
+        rerender(wrapper, props);
 
         expect(screen.queryByText("Customize Review")).toBeInTheDocument();
     });
@@ -81,11 +90,7 @@ describe("ModalCustomizeReview", () => {
     test("should change the message successfully", () => {
         const {wrapper, props} = setup();
 
-        wrapper.rerender(
-            <MemoryRouter>
-                <ModalCustomizeReview {...props} show />
-            </MemoryRouter>
-        );
+        rerender(wrapper, props);
 
         const newMessage = "new message";
         fireEvent.change(screen.queryByLabelText("Input message"), {
@@ -95,14 +100,10 @@ describe("ModalCustomizeReview", () => {
         expect(screen.queryByText(newMessage)).toBeInTheDocument();
     });
 
-    test("should submit the message successfully", async () => {
+    test("should submit successfully", async () => {
         const {wrapper, props} = setup();
 
-        wrapper.rerender(
-            <MemoryRouter>
-                <ModalCustomizeReview {...props} show />
-            </MemoryRouter>
-        );
+        rerender(wrapper, props);
 
         global.fetch = jest.fn().mockResolvedValue({
             ok: true,
@@ -132,14 +133,27 @@ describe("ModalCustomizeReview", () => {
         );
     });
 
-    test("should fail to submit the message", async () => {
+    test("should fail to submit", async () => {
         const {wrapper, props} = setup();
 
-        wrapper.rerender(
-            <MemoryRouter>
-                <ModalCustomizeReview {...props} show />
-            </MemoryRouter>
-        );
+        rerender(wrapper, props);
+
+        global.fetch = jest.fn().mockResolvedValue({
+            ok: false,
+            json: jest.fn().mockResolvedValue({})
+        });
+
+        jest.spyOn(console, "log");
+
+        fireEvent.click(screen.queryByText("Save"));
+
+        await waitFor(() => expect(console.log).toHaveBeenCalled());
+    });
+
+    test("should reject to submit", async () => {
+        const {wrapper, props} = setup();
+
+        rerender(wrapper, props);
 
         global.fetch = jest.fn().mockRejectedValue("500");
 
@@ -154,11 +168,7 @@ describe("ModalCustomizeReview", () => {
     test("should reset things", async () => {
         const {wrapper, props} = setup();
 
-        wrapper.rerender(
-            <MemoryRouter>
-                <ModalCustomizeReview {...props} show />
-            </MemoryRouter>
-        );
+        rerender(wrapper, props);
 
         const newMessage = "new message";
         fireEvent.change(screen.queryByLabelText("Input message"), {
