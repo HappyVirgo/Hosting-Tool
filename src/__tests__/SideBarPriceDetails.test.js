@@ -13,12 +13,11 @@ jest.mock("date-fns-tz", () => ({
 const setup = overrides => {
     const props = {
         listing: {
-            airbnbTimeZone: "America/Los_Angeles",
-            _id: "213",
+            _id: "213"
         },
         selectedDates: {
             startDate: new Date("12/29/2020"),
-            endDate: new Date("12/30/2020"),
+            endDate: new Date("12/30/2020")
         },
         onHide: jest.fn(),
 
@@ -55,6 +54,63 @@ describe("SideBarPriceDetails", () => {
 
         expect(screen.queryByText("Dec 29th - 30th")).toBeInTheDocument();
         expect(screen.queryByText("Available")).toBeInTheDocument();
+    });
+
+    const appliedRules = [
+        {
+            title: "Airbnb Smart Price",
+            _id: "1",
+            changedPrice: true,
+            currencySymbol: "$",
+            price: "106",
+            equation: "$106"
+        },
+        {
+            title: "Airbnb Minimum Listing Price",
+            _id: "2",
+            changedPrice: true,
+            currencySymbol: "$",
+            price: "106",
+            equation: "if $100 > $106 then $100 = $106"
+        },
+        {
+            title: "Airbnb Maximum Listing Price",
+            _id: "3",
+            changedPrice: true,
+            currencySymbol: "$",
+            price: "106",
+            equation: "if $193 < $106 then $193 = $106"
+        },
+        {
+            title: "+$10 (Su, Mo, Tu, We, Th, Fr, Sa)",
+            _id: "4",
+            changedPrice: true,
+            currencySymbol: "$",
+            price: "116",
+            equation: "$106 + $10 = $116"
+        },
+        {
+            title: "Minimum Listing Price (from Listing Settings)",
+            _id: "5",
+            changedPrice: true,
+            currencySymbol: "$",
+            price: "116",
+            equation: "if $1 > $116 then $1 = $116"
+        }
+    ];
+
+    appliedRules.map((rule, idx) => {
+        test("should show correct applied rule", () => {
+            setup({
+                selectedDates: {
+                    startDate: new Date("12/29/2020"),
+                    endDate: new Date("12/30/2020"),
+                    appliedRules: [rule]
+                }
+            });
+
+            expect(screen.queryByText(rule.title)).toBeInTheDocument();
+        });
     });
 
     test("should work well while toggling checkbox", () => {
@@ -119,7 +175,7 @@ describe("SideBarPriceDetails", () => {
 
         expect(screen.queryByText(message)).toBeInTheDocument();
     });
-    
+
     test("should cancel to submit", () => {
         const {props} = setup({
             selectedDates: {
@@ -130,8 +186,7 @@ describe("SideBarPriceDetails", () => {
         });
 
         doClickCancel();
-        
+
         expect(props.onHide).toHaveBeenCalled();
     });
-
 });
