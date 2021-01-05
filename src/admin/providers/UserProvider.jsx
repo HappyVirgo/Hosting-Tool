@@ -177,7 +177,7 @@ class UserProvider extends Component {
                 }
             } else {
                 console.log("response", response);
-                // window.location = "/admin";
+                // window.location = "/";
             }
         } catch (error) {
             console.log("error: ", error);

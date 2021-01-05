@@ -200,7 +200,7 @@ class ModalListingGroup extends Component {
                     await this.hideListingGroupModal(true);
                 } else {
                     console.error("response", response);
-                    // window.location = "/admin";
+                    // window.location = "/";
                     this.setState({showSpinner: false});
                 }
             }

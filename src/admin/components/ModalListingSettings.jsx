@@ -435,7 +435,7 @@ function ModalListingSettings(props) {
                     hideListingSettingsModal(true);
                 } else {
                     console.error("response", response);
-                    // window.location = "/admin";
+                    // window.location = "/";
                 }
             }
             // this.setState({showSpinner: false});

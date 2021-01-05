@@ -98,7 +98,7 @@ class Billing extends Component {
                     await updateUser();
                     this.getBilling();
                 } else {
-                    window.location = "/admin";
+                    window.location = "/";
                 }
             }
             this.setState({showConfirmModal: false});
@@ -120,7 +120,7 @@ class Billing extends Component {
             const billing = await response.json();
             this.setState({billing});
         } else {
-            window.location = "/admin";
+            window.location = "/";
         }
     }
 
@@ -171,7 +171,7 @@ class Billing extends Component {
                 const error = await response.json();
                 errors.creditCard = error.error;
                 this.setState({errors});
-                // window.location = "/admin";
+                // window.location = "/";
             }
         } catch (error) {
             console.log("error", error);

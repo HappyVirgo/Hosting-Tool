@@ -100,7 +100,7 @@ class Listings extends Component {
                                             </span>
                                         )}
                                         <Link
-                                            to="/admin/messaging/all"
+                                            to="/messaging/all"
                                             roll="button"
                                             className="btn btn-xs btn-outline-primary ml-3"
                                         >
@@ -129,7 +129,7 @@ class Listings extends Component {
                                                     )}
                                                     <div className="btn-group ml-3">
                                                         <Link
-                                                            to={`/admin/messaging/${listingGroup._id}`}
+                                                            to={`/messaging/${listingGroup._id}`}
                                                             roll="button"
                                                             className="btn btn-xs btn-outline-primary"
                                                         >
@@ -139,7 +139,7 @@ class Listings extends Component {
                                                             </span>
                                                         </Link>
                                                         <Link
-                                                            to="/admin/settings"
+                                                            to="/settings"
                                                             roll="button"
                                                             className="btn btn-xs btn-outline-primary"
                                                         >
@@ -213,7 +213,7 @@ class Listings extends Component {
                                                     )}
                                                     <div className="btn-group ml-3">
                                                         <Link
-                                                            to={`/admin/messaging/${listing.airbnbUserID}/${listing.airbnbListingID}`}
+                                                            to={`/messaging/${listing.airbnbUserID}/${listing.airbnbListingID}`}
                                                             roll="button"
                                                             className="btn btn-xs btn-outline-primary"
                                                         >
@@ -223,7 +223,7 @@ class Listings extends Component {
                                                             </span>
                                                         </Link>
                                                         <Link
-                                                            to={`/admin/pricing/${listing.airbnbUserID}/${listing.airbnbListingID}`}
+                                                            to={`/pricing/${listing.airbnbUserID}/${listing.airbnbListingID}`}
                                                             roll="button"
                                                             className="btn btn-xs btn-outline-primary"
                                                         >
