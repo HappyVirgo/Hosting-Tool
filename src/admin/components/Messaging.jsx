@@ -107,7 +107,7 @@ class Messaging extends Component {
                 }
             } = this.props;
             if (!airbnbUserID && airbnbListingID !== "all") {
-                window.location = "/admin";
+                window.location = "/";
             }
             this.getMessageRules();
 
@@ -177,7 +177,7 @@ class Messaging extends Component {
                 this.setState({messageRules, errors});
             } else {
                 console.log("response", response);
-                window.location = "/admin";
+                window.location = "/";
             }
         } catch (error) {
             console.log("error: ", error);
@@ -201,7 +201,7 @@ class Messaging extends Component {
                     this.setState({listing});
                 } else {
                     console.log("response", response);
-                    // window.location = "/admin";
+                    // window.location = "/";
                 }
             }
         } catch (error) {
@@ -224,7 +224,7 @@ class Messaging extends Component {
                 this.setState({listingGroup});
             } else {
                 console.log("response", response);
-                // window.location = "/admin";
+                // window.location = "/";
             }
         } catch (error) {
             console.log("error: ", error);
@@ -295,7 +295,7 @@ class Messaging extends Component {
                 updateUser();
             } else {
                 console.log("response", response);
-                // window.location = "/admin";
+                // window.location = "/";
             }
         } catch (error) {
             console.log("error", error);
@@ -339,7 +339,7 @@ class Messaging extends Component {
                 await this.getMessageRules();
             } else {
                 console.log("response", response);
-                // window.location = "/admin";
+                // window.location = "/";
             }
             showSpinner[_id] = false;
             this.setState({showSpinner});
@@ -690,7 +690,7 @@ class Messaging extends Component {
                             )}
                             {isListingPage && rule.listingGroupID && (
                                 <Link
-                                    to={`/admin/messaging/${rule.listingGroupID}`}
+                                    to={`/messaging/${rule.listingGroupID}`}
                                     roll="button"
                                     className="btn btn-xs btn-outline-primary"
                                 >
@@ -703,7 +703,7 @@ class Messaging extends Component {
                             {((isListingPage && rule.isGlobal) ||
                                 (isListingGroupPage && rule.isGlobal)) && (
                                 <Link
-                                    to="/admin/messaging/all"
+                                    to="/messaging/all"
                                     roll="button"
                                     className="btn btn-xs btn-outline-primary"
                                 >

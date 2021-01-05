@@ -104,7 +104,7 @@ function Settings() {
                 }, 3000);
             } else {
                 console.log("response", response);
-                window.location = "/admin";
+                window.location = "/";
             }
         } catch (error) {
             console.log("error: ", error);
@@ -133,7 +133,7 @@ function Settings() {
                     await updateUser();
                 } else {
                     console.log("response", response);
-                    // window.location = "/admin";
+                    // window.location = "/";
                 }
             }
             setShowConfirmDeleteAccountModal(false);
@@ -208,7 +208,7 @@ function Settings() {
                     await updateUser();
                 } else {
                     console.log("response", response);
-                    window.location = "/admin";
+                    window.location = "/";
                 }
             }
             setShowConfirmDeleteListingGroupModal(false);
@@ -262,7 +262,7 @@ function Settings() {
                     await onRefresh();
                 } else {
                     console.log("response", response);
-                    window.location = "/admin";
+                    window.location = "/";
                 }
             }
             setShowConfirmDeleteTagModal(false);

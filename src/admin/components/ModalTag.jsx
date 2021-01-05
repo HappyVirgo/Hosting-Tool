@@ -100,7 +100,7 @@ class ModalTag extends Component {
                     onHide(true);
                 } else {
                     console.log("response", response);
-                    window.location = "/admin";
+                    window.location = "/";
                 }
             }
             this.setState({errors, showSpinner: false});

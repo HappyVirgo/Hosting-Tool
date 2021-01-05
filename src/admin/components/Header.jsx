@@ -117,7 +117,7 @@ function Header() {
 
     async function handleSearch(event) {
         event.preventDefault();
-        history.push(`/admin/inbox?q=${encodeURIComponent(query)}`);
+        history.push(`/inbox?q=${encodeURIComponent(query)}`);
     }
 
     async function handleClearQuery() {
@@ -131,27 +131,27 @@ function Header() {
     const regexCalendar = /#!\/calendar\/(.*)/;
     const foundCalendar = location.hash.match(regexCalendar);
     if (foundCalendar) {
-        return <Redirect to={`/admin/pricing/${foundCalendar[1]}`} />;
+        return <Redirect to={`/pricing/${foundCalendar[1]}`} />;
     }
     const regexMessageRules = /#!\/messageRules\/(.*)/;
     const foundMessageRules = location.hash.match(regexMessageRules);
     if (foundMessageRules) {
-        return <Redirect to={`/admin/messaging/${foundMessageRules[1]}`} />;
+        return <Redirect to={`/messaging/${foundMessageRules[1]}`} />;
     }
     const regexListings = /#!\/listings/;
     const foundListings = location.hash.match(regexListings);
     if (foundListings) {
-        return <Redirect to="/admin/listings" />;
+        return <Redirect to="/listings" />;
     }
     const regexBilling = /#!\/billing/;
     const foundBilling = location.hash.match(regexBilling);
     if (foundBilling) {
-        return <Redirect to="/admin/billing" />;
+        return <Redirect to="/billing" />;
     }
     const regexSettings = /#!\/settings/;
     const foundSettings = location.hash.match(regexSettings);
     if (foundSettings) {
-        return <Redirect to="/admin/settings" />;
+        return <Redirect to="/settings" />;
     }
 
     const userImage = gravatar.url(username, {s: "120", r: "pg", d: "mp"});
@@ -223,15 +223,15 @@ function Header() {
             </div>
 
             <div className="d-block d-lg-none pd-y-8 pd-x-15">{searchElement}</div>
-            <NavDropdown.Item as={Link} to="/admin/settings" className="d-flex align-items-center">
+            <NavDropdown.Item as={Link} to="/settings" className="d-flex align-items-center">
                 <FiSettings className="mr-1" />
                 Settings
             </NavDropdown.Item>
-            <NavDropdown.Item as={Link} to="/admin/billing" className="d-flex align-items-center">
+            <NavDropdown.Item as={Link} to="/billing" className="d-flex align-items-center">
                 <FiCreditCard className="mr-1" />
                 Billing
             </NavDropdown.Item>
-            <NavDropdown.Item as={Link} to="/admin/faq" className="d-flex align-items-center">
+            <NavDropdown.Item as={Link} to="/faq" className="d-flex align-items-center">
                 <FiHelpCircle className="mr-1" />
                 F.A.Q.
             </NavDropdown.Item>
@@ -250,7 +250,7 @@ function Header() {
         <div className="az-header">
             <div className="container">
                 <Navbar bg="transparent" expand="sm" className="flex-grow-1">
-                    <Navbar.Brand as={Link} to="/admin">
+                    <Navbar.Brand as={Link} to="/">
                         <img
                             src={logoBlack}
                             height="30"
@@ -266,13 +266,13 @@ function Header() {
                     </Navbar.Brand>
                     <Nav className="flex-grow-1">
                         {!user.isFiller && filteredListings.length !== 0 && (
-                            <Nav.Link as={Link} to="/admin" className="mr-3">
+                            <Nav.Link as={Link} to="/" className="mr-3">
                                 <FiCalendar className="d-block d-sm-none" />
                                 <span className="d-none d-sm-block">Calendar</span>
                             </Nav.Link>
                         )}
                         {!user.isFiller && filteredListings.length !== 0 && (
-                            <Nav.Link as={Link} to="/admin/inbox" className="mr-3">
+                            <Nav.Link as={Link} to="/inbox" className="mr-3">
                                 <FiMessageSquare className="d-block d-sm-none" />
                                 <span className="d-none d-sm-block">Inbox</span>
                             </Nav.Link>

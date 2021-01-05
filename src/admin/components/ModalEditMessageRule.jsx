@@ -170,7 +170,7 @@ function ModalEditMessageRule(props) {
                 await setMessageRules(messageRules);
             } else {
                 console.error("response", response);
-                window.location = "/admin";
+                window.location = "/";
             }
         } catch (error) {
             console.error("error: ", error);
@@ -220,7 +220,7 @@ function ModalEditMessageRule(props) {
                     await setShowSpinner(false);
                 } else {
                     console.error("response", response);
-                    // window.location = "/admin";
+                    // window.location = "/";
                 }
             }
         } catch (error) {

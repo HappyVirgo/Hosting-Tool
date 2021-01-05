@@ -95,7 +95,7 @@ function NavMessaging(props) {
                 items.push(
                     <NavDropdown.Item
                         as={Link}
-                        to={`/admin/messaging/${listingGroup._id}`}
+                        to={`/messaging/${listingGroup._id}`}
                         className="nav-sub-link justify-content-between d-flex"
                         key={`messageRuleNavItem${listingGroup._id}`}
                     >
@@ -122,7 +122,7 @@ function NavMessaging(props) {
                 items.push(
                     <NavDropdown.Item
                         as={Link}
-                        to={`/admin/messaging/${listing.airbnbUserID}/${listing.airbnbListingID}`}
+                        to={`/messaging/${listing.airbnbUserID}/${listing.airbnbListingID}`}
                         className="nav-sub-link justify-content-between d-flex"
                         key={`messageRuleNavItem${listing.airbnbUserID}${listing.airbnbListingID}`}
                     >
@@ -199,7 +199,7 @@ function NavMessaging(props) {
         menu = (
             <Nav.Link
                 as={NavLink}
-                to={`/admin/messaging/${filteredListings[0].airbnbUserID}/${filteredListings[0].airbnbListingID}`}
+                to={`/messaging/${filteredListings[0].airbnbUserID}/${filteredListings[0].airbnbListingID}`}
                 className="mr-2"
             >
                 <FiMail className="d-block d-md-none" />

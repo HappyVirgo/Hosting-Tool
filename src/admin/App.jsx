@@ -29,25 +29,23 @@ export const App = () => (
             <div className="az-minimal">
                 <Header />
                 <Switch>
-                    <Route exact path="/admin" component={WaitingComponent(MultiCalendar)} />
+                    <Route exact path="/" component={WaitingComponent(MultiCalendar)} />
+                    <Route path="/inbox/:reservationID?" component={WaitingComponent(Inbox)} />
+
+                    <Route path="/turnovers" component={WaitingComponent(Turnovers)} />
                     <Route
-                        path="/admin/inbox/:reservationID?"
-                        component={WaitingComponent(Inbox)}
-                    />
-                    <Route path="/admin/turnovers" component={WaitingComponent(Turnovers)} />
-                    <Route
-                        path="/admin/messaging/:airbnbUserID/:airbnbListingID?"
+                        path="/messaging/:airbnbUserID/:airbnbListingID?"
                         component={WaitingComponent(Messaging)}
                     />
                     <Route
-                        path="/admin/pricing/:airbnbUserID/:airbnbListingID?"
+                        path="/pricing/:airbnbUserID/:airbnbListingID?"
                         component={WaitingComponent(Pricing)}
                     />
-                    <Route path="/admin/listings" component={WaitingComponent(Listings)} />
-                    <Route path="/admin/settings" component={WaitingComponent(Settings)} />
-                    <Route path="/admin/billing" component={WaitingComponent(Billing)} />
-                    <Route path="/admin/faq" component={WaitingComponent(FAQ)} />
-                    <Redirect to="/admin" />
+                    <Route path="/listings" component={WaitingComponent(Listings)} />
+                    <Route path="/settings" component={WaitingComponent(Settings)} />
+                    <Route path="/billing" component={WaitingComponent(Billing)} />
+                    <Route path="/faq" component={WaitingComponent(FAQ)} />
+                    <Redirect to="/" />
                 </Switch>
                 <React.Suspense fallback={<div />}>
                     <Footer />
