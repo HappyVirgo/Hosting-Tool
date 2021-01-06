@@ -10,27 +10,27 @@ const setup = overrides => {
                 {
                     listingEnabled: true,
                     airbnbName: "Happy 1 Airbnb",
-                    nickName: "happy1",
-                    airbnbUserID: "1",
-                    airbnbListingID: "123"
+                    nickname: "happy1",
+                    airbnbUserID: "happy1-airbnbUserID",
+                    airbnbListingID: "happy1-airbnbListingID"
                 },
                 {
                     listingEnabled: true,
                     airbnbName: "Happy 2 Airbnb",
-                    nickName: "happy2",
-                    airbnbUserID: "2",
-                    airbnbListingID: "234"
+                    nickname: "happy2",
+                    airbnbUserID: "happy2-airbnbUserID",
+                    airbnbListingID: "happy2-airbnbListingID"
                 }
             ],
             listingGroups: [
                 {
                     _id: "1",
-                    name: "111",
+                    name: "ListingGroup 1",
                     uniqueMessageRulesCount: 3
                 },
                 {
                     _id: "2",
-                    name: "222",
+                    name: "ListingGroup 2",
                     uniqueMessageRulesCount: 3
                 }
             ],
@@ -59,20 +59,71 @@ describe("NavMessaging", () => {
     test("should render if there are several listings", async () => {
         setup();
         doClickShow();
-        await waitFor(() => screen.getByText("Happy 1 Airbnb"));
+        await waitFor(() => screen.getByText("happy1"));
+        expect(screen.getByText("happy1")).toBeInTheDocument();
+        expect(screen.getByText("happy2")).toBeInTheDocument();
+    });
+    test("should render correctly without nickName", async () => {
+        setup({
+            listings: [
+                {
+                    listingEnabled: true,
+                    airbnbName: "Happy 1 Airbnb",
+                    airbnbUserID: "happy1-airbnbUserID",
+                    airbnbListingID: "happy1-airbnbListingID"
+                },
+                {
+                    listingEnabled: true,
+                    airbnbName: "Happy 2 Airbnb",
+                    airbnbUserID: "happy2-airbnbUserID",
+                    airbnbListingID: "happy2-airbnbListingID"
+                }
+            ]
+        });
+        doClickShow();
         await waitFor(() => screen.getByText("Happy 2 Airbnb"));
-        expect(screen.getByText("Happy 1 Airbnb")).toBeInTheDocument();
         expect(screen.getByText("Happy 2 Airbnb")).toBeInTheDocument();
     });
+    test("shouldn't show if listingEnabled is false", async() => {
+        setup({
+            listings: [
+                {
+                    listingEnabled: false,
+                    airbnbName: "Happy 1 Airbnb",
+                    nickname: "happy1",
+                    airbnbUserID: "happy1-airbnbUserID",
+                    airbnbListingID: "happy1-airbnbListingID"
+                },
+                {
+                    listingEnabled: true,
+                    airbnbName: "Happy 2 Airbnb",
+                    nickname: "happy2",
+                    airbnbUserID: "happy2-airbnbUserID",
+                    airbnbListingID: "happy2-airbnbListingID"
+                },
+                {
+                    listingEnabled: true,
+                    airbnbName: "Happy 3 Airbnb",
+                    nickname: "happy3",
+                    airbnbUserID: "happy3-airbnbUserID",
+                    airbnbListingID: "happy3-airbnbListingID"
+                }
+            ]
+        });
+        doClickShow();
+        await waitFor(() => screen.getByText("happy2"));
+        expect(screen.queryByText("happy1")).not.toBeInTheDocument();
+        expect(screen.queryByText("happy2")).toBeInTheDocument();
+    })
     test("should render if there is only one listing", async () => {
         setup({
             listings: [
                 {
                     listingEnabled: true,
                     airbnbName: "Happy 3 Airbnb",
-                    nickName: "happy3",
-                    airbnbUserID: "3",
-                    airbnbListingID: "134"
+                    nickname: "happy3",
+                    airbnbUserID: "happy3-airbnbUserID",
+                    airbnbListingID: "happy3-airbnbListingID"
                 }
             ]
         });
@@ -81,11 +132,11 @@ describe("NavMessaging", () => {
             screen.getByRole("link", {
                 name: "Messaging"
             })
-        ).toHaveAttribute("href", "/messaging/3/134");
+        ).toHaveAttribute("href", "/messaging/happy3-airbnbUserID/happy3-airbnbListingID");
     });
     const links = [
-        {text: "Happy 1 Airbnb", location: "/messaging/1/123"},
-        {text: "Happy 2 Airbnb", location: "/messaging/2/234"}
+        {text: "happy1", location: "/messaging/happy1-airbnbUserID/happy1-airbnbListingID"},
+        {text: "happy2", location: "/messaging/happy2-airbnbUserID/happy2-airbnbListingID"}
     ];
     test.each(links)("Check if Nav Bar have %s link.", async link => {
         setup();
