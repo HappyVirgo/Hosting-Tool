@@ -1,7 +1,8 @@
 import React from "react";
-import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+import {render, screen, waitFor} from "@testing-library/react";
 import {MemoryRouter} from "react-router-dom";
 
+import {changeInput, clickButton} from "../testUtils";
 import ModalTag from "../admin/components/ModalTag";
 
 jest.mock("../admin/providers/UserProvider", () => {
@@ -125,9 +126,8 @@ describe("ModalTag", () => {
         rerender(wrapper, props);
 
         const tagName = "New Tag Name";
-        fireEvent.change(screen.queryByLabelText("Name"), {
-            target: {value: tagName}
-        });
+
+        changeInput("Name", tagName);
 
         expect(screen.queryByLabelText("Name").value).toBe(tagName);
     });
@@ -138,9 +138,8 @@ describe("ModalTag", () => {
         rerender(wrapper, props);
 
         const newMessage = "new message";
-        fireEvent.change(screen.queryByLabelText("Tag Text"), {
-            target: {value: newMessage}
-        });
+
+        changeInput("Tag Text", newMessage);
 
         expect(screen.queryByText(newMessage)).toBeInTheDocument();
     });
@@ -155,7 +154,7 @@ describe("ModalTag", () => {
 
         rerender(wrapper, props);
 
-        fireEvent.click(screen.queryByText("Save"));
+        clickButton("Save");
 
         expect(screen.queryByText("Please add a tag name.")).toBeInTheDocument();
     });
@@ -170,7 +169,7 @@ describe("ModalTag", () => {
 
         rerender(wrapper, props);
 
-        fireEvent.click(screen.queryByText("Save"));
+        clickButton("Save");
 
         expect(screen.queryByText("Please add some tag text.")).toBeInTheDocument();
     });
@@ -191,7 +190,7 @@ describe("ModalTag", () => {
             json: jest.fn().mockResolvedValue({})
         });
 
-        fireEvent.click(screen.queryByText("Save"));
+        clickButton("Save");
 
         await waitFor(() => expect(props.onHide).toHaveBeenCalled());
 
@@ -219,7 +218,7 @@ describe("ModalTag", () => {
         });
         jest.spyOn(console, "log");
 
-        fireEvent.click(screen.queryByText("Save"));
+        clickButton("Save");
 
         await waitFor(() => expect(console.log).toHaveBeenCalled());
     });
@@ -232,7 +231,7 @@ describe("ModalTag", () => {
         global.fetch = jest.fn().mockRejectedValue("500");
         jest.spyOn(console, "log");
 
-        fireEvent.click(screen.queryByText("Save"));
+        clickButton("Save");
 
         await waitFor(() => expect(console.log).toHaveBeenCalled());
     });
