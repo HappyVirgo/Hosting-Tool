@@ -2,15 +2,13 @@ import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import {UserContext} from "@/admin/providers/UserProvider";
 import Header from "@/admin/components/Header";
 
-const setup = overrides => {
-    const history = createMemoryHistory()
-    const value = {
-        user : {
-            isFiller: true,
-            _id: 1,
+jest.mock("@/admin/providers/UserProvider", () => {
+    const UserContext = jest.requireActual("react").createContext({
+        user: {
+            isFiller: false,
+            _id: "1",
             firstName: "Tomas",
             lastName: "Krones",
             username: "Tom",
@@ -31,21 +29,27 @@ const setup = overrides => {
                     airbnbListingID: "234"
                 }
             ],
-            ...overrides
-        }
-    };
+        },
+        updateUser: jest.fn(),
+    });
 
+    return {
+        __esModule: true,
+        UserContext,
+        UserConsumer: UserContext.Consumer,
+    };
+});
+const setup = overrides => {
+    const history = createMemoryHistory()
+    global.HelpCrunch = jest.fn();
     const wrapper = render(
-        <UserContext.Provider value={value}>
             <Router history={history}>
                 <Header />
             </Router>
-        </UserContext.Provider>
     );
 
     return {
         wrapper,
-        props
     };
 };
 
