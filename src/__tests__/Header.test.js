@@ -1,7 +1,7 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import { createMemoryHistory } from 'history';
-import { Router } from 'react-router-dom';
+import {createMemoryHistory} from "history";
+import {Router} from "react-router-dom";
 import Header from "@/admin/components/Header";
 
 jest.mock("@/admin/providers/UserProvider", () => {
@@ -15,11 +15,11 @@ jest.mock("@/admin/providers/UserProvider", () => {
             subscriptionStatus: "active",
             listings: [
                 {
-                listingEnabled: true,
-                airbnbName: "Happy 1 Airbnb",
-                nickName: "happy1",
-                airbnbUserID: "1",
-                airbnbListingID: "123"
+                    listingEnabled: true,
+                    airbnbName: "Happy 1 Airbnb",
+                    nickName: "happy1",
+                    airbnbUserID: "1",
+                    airbnbListingID: "123"
                 },
                 {
                     listingEnabled: true,
@@ -42,51 +42,59 @@ jest.mock("@/admin/providers/UserProvider", () => {
                 }
             ]
         },
-        updateUser: jest.fn(),
+        updateUser: jest.fn()
     });
 
     return {
         __esModule: true,
         UserContext,
-        UserConsumer: UserContext.Consumer,
+        UserConsumer: UserContext.Consumer
     };
 });
 const setup = () => {
-    const history = createMemoryHistory()
+    const history = createMemoryHistory();
     global.HelpCrunch = jest.fn();
     const wrapper = render(
-            <Router history={history}>
-                <Header />
-            </Router>
+        <Router history={history}>
+            <Header />
+        </Router>
     );
 
     return {
-        wrapper,
+        wrapper
     };
 };
 
 describe("NavPricing", () => {
     test("should render correctly while first rendering", async () => {
         setup();
-        expect(screen.getByRole('link', {
-            name: /calendar/i
-        })).toBeInTheDocument();
-        expect(screen.getByRole('button', {
-            name: /pricing/i
-        })).toBeInTheDocument();
-        expect(screen.getByRole('link', {
-            name: /inbox/i
-        })).toBeInTheDocument();
-        expect(screen.getByRole('button', {
-            name: /messaging/i
-        })).toBeInTheDocument();
+        expect(
+            screen.getByRole("link", {
+                name: /calendar/i
+            })
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole("button", {
+                name: /pricing/i
+            })
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole("link", {
+                name: /inbox/i
+            })
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole("button", {
+                name: /messaging/i
+            })
+        ).toBeInTheDocument();
         const logoDom = screen.getByTestId(/site-logo/i);
-        expect(logoDom).toHaveAttribute("href", "/"); 
+        expect(logoDom).toHaveAttribute("href", "/");
     });
 
     const links = [
-        {text:"Calendar", link:"/"},
-        {text:"Inbox", link:"/inbox"},
+        {text: "Calendar", link: "/"},
+        {text: "Inbox", link: "/inbox"}
     ];
     test.each(links)("Check if Nav Bar have %s link.", link => {
         setup();
@@ -95,9 +103,9 @@ describe("NavPricing", () => {
         });
         expect(linkDom).toHaveAttribute("href", link.link);
     });
-    test("avatar should work correctly", async() => {
+    test("avatar should work correctly", async () => {
         setup();
-        const avatarDom = screen.getByRole('img', {
+        const avatarDom = screen.getByRole("img", {
             name: /tomas krones avatar/i
         });
         expect(avatarDom).toBeInTheDocument();
