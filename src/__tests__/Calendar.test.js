@@ -76,6 +76,7 @@ describe("Calendar", () => {
             const anEvent = screen.queryByText("$27", {
                 selector: "h5"
             });
+
             expect(anEvent).toBeInTheDocument();
 
             fireEvent.click(anEvent);
@@ -89,6 +90,7 @@ describe("Calendar", () => {
             const anEvent = screen.queryByText("$27", {
                 selector: "h5"
             });
+
             expect(anEvent).toBeInTheDocument();
 
             fireEvent.click(anEvent);
@@ -108,12 +110,29 @@ describe("Calendar", () => {
             fireEvent.focus(anEvent);
         });
 
+        test("should trigger keyPress event", () => {
+            mount();
+
+            const anEvent = screen.queryByText("$27", {
+                selector: "h5"
+            });
+
+            expect(anEvent).toBeInTheDocument();
+
+            fireEvent.focus(anEvent);
+            fireEvent.keyPress(anEvent, {
+                key: "enter",
+                keyCode: 13
+            });
+        });
+
         test("should trigger mouse leave event", () => {
             mount();
 
             const anEvent = screen.queryByText("$27", {
                 selector: "h5"
             });
+
             expect(anEvent).toBeInTheDocument();
 
             fireEvent.click(anEvent);
@@ -133,6 +152,7 @@ describe("Calendar", () => {
         });
 
         const btnPrevMonth = screen.queryByTestId("prev-month");
+
         expect(btnPrevMonth).toBeInTheDocument();
 
         fireEvent.click(btnPrevMonth);
@@ -152,6 +172,7 @@ describe("Calendar", () => {
         });
 
         const btnNextMonth = screen.queryByTestId("next-month");
+
         expect(btnNextMonth).toBeInTheDocument();
 
         fireEvent.click(btnNextMonth);
@@ -178,6 +199,7 @@ describe("Calendar", () => {
             const button = screen.queryByText(btnText, {
                 selector: "button"
             });
+
             expect(button).toBeInTheDocument();
 
             fireEvent.click(button);
@@ -231,11 +253,31 @@ describe("Calendar", () => {
         test("should trigger callback as click on a reservation", () => {
             const {props} = mount();
 
-            fireEvent.click(screen.queryByText("Hao #20"));
+            const label = "Hao #20";
+
+            fireEvent.click(screen.queryByText(label));
 
             expect(props.onSelectedReservation).toHaveBeenCalledWith({
                 _id: 20,
-                custom: {firstName: "Hao #20"}
+                custom: {firstName: label}
+            });
+        });
+
+        test("should trigger callback as keypress on a reservation", () => {
+            const {props} = mount();
+
+            const label = "Hao #20";
+            const aReservation = screen.queryByText(label);
+
+            fireEvent.focus(aReservation);
+            fireEvent.keyPress(aReservation, {
+                key: "enter",
+                keyCode: 13
+            });
+
+            expect(props.onSelectedReservation).toHaveBeenCalledWith({
+                _id: 20,
+                custom: {firstName: label}
             });
         });
     });
