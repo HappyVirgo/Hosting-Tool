@@ -459,7 +459,7 @@ function ModalListingSettings(props) {
                         formIsValid = false;
                         errors.basePrice = "Please add a base price.";
                     }
-                    if (listingSettings.basePrice < listingSettings.minPrice) {
+                    else if (Number(listingSettings.basePrice) < Number(listingSettings.minPrice)) {
                         formIsValid = false;
                         errors.basePrice =
                             "Please add a base price that is higher than your minimum price.";
