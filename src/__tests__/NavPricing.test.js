@@ -1,5 +1,6 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+// import {act} from "@testing-library/react-hooks"
 import {BrowserRouter} from "react-router-dom";
 import NavPricing from "@/admin/components/NavPricing";
 
@@ -138,5 +139,23 @@ describe("NavPricing", () => {
             name: link.text
         });
         expect(linkDom).toHaveAttribute("href", link.location);
+    });
+    test("check if search filter works well", async() => {
+        const {props} = setup();
+        doClickShow();
+        await waitFor(() => screen.getByText(/listings/i));
+        expect(screen.getByRole('searchbox')).toBeInTheDocument();
+        const input = screen.getByPlaceholderText('Filter...')
+        fireEvent.change(input, {target: {value: "happy1"}});
+        expect(input.value).toBe("happy1");
+        const listings = props.user.listings.filter((listing) => listing.nickname===input.value);
+        setup({
+            listings: listings
+        });
+        expect(
+            screen.getByRole("link", {
+                name: "Pricing"
+            })
+        ).toHaveAttribute("href", "/pricing/happy1-airbnbUserID/happy1-airbnbListingID");
     });
 });
