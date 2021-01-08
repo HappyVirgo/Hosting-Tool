@@ -7,6 +7,10 @@ import AddAirbnbAccount from "../admin/components/AddAirbnbAccount";
 
 describe('AddAirbnbAccount', () => {
 
+    afterEach(() => {
+        jest.clearAllMocks();
+    })
+
     describe('Initial load', () => {
 
         it('Renders as a form', () => {
@@ -88,12 +92,7 @@ describe('AddAirbnbAccount', () => {
 
             await waitFor(() => {
                 expect(window.fetch).toHaveBeenCalledTimes(1);
-                // Can't get past
-                // __insp.push(["tagSession", "Airbnb Added Event"]);
-                // and
-                // await updateUser(20);
-                // inside hideAddAccount()
-                // expect(onHideFunction.mock.calls.length).toBe(1);
+                expect(onHideFunction.mock.calls.length).toBe(1);
             });
         })
 
@@ -163,28 +162,115 @@ describe('AddAirbnbAccount', () => {
 
     describe('User has logged into Airbnb account', () => {
 
-        beforeEach(async () => {
-            jest.spyOn(window, 'fetch')
-            window.fetch.mockResolvedValueOnce({
-                ok: false,
-                json: async () => ({error: {id: "1", verificationMethods: ["1", "2"]}}),
-            });
+        describe('Captcha verification', () => {
 
-            renderAddAirbnbAccount(emptyAddAirbnbAccountProps());
+            beforeEach(async () => {
+                setUpVerificationMethods("captcha");
+            })
 
-            fireEvent.change(screen.getByLabelText('Airbnb Email'), {target: {value: "username@gmail.com"}});
-            fireEvent.change(screen.getByLabelText('Airbnb Password'), {target: {value: "password"}});
+            it('displays only the relevant text', async () => {
 
-            fireEvent.click(screen.getByText('Add Account'))
+                expect(screen.queryByText(/.*Airbnb wants to confirm that you are a real person and not a robot.*/)).toBeInTheDocument();
+                expect(screen.queryByText(/.*Airbnb is temporarily not allowing third party tools to authenticate.*/)).not.toBeInTheDocument();
+                expect(screen.queryByText(/.*Host Tools lost connection with Airbnb.*/)).not.toBeInTheDocument();
+                expect(screen.queryByText(/.*Please choose from one of the options below.*/)).not.toBeInTheDocument();
 
-            await waitFor(() => {
-                expect(screen.getByText('Verify Airbnb Account'))
-            });
+            })
+
+            it('hides Next button if captcha is not clicked', async () => {
+
+                expect(screen.queryByText("Next")).not.toBeInTheDocument();
+
+            })
+
+            it('shows Next button if captcha is clicked', async () => {
+
+                fireEvent.click(screen.getByText('Confirm Your Account'))
+                expect(screen.queryByText("Next")).toBeInTheDocument();
+
+            })
+
+            it('calls the verification endpoint with the correct data', async () => {
+
+                fireEvent.click(screen.getByText('Confirm Your Account'))
+
+                jest.spyOn(window, 'fetch')
+                window.fetch.mockResolvedValueOnce({
+                    ok: true,
+                    json: async () => ({}),
+                });
+
+                fireEvent.click(screen.getByText('Next'))
+
+                await waitFor(() => {
+                    expect(window.fetch).toHaveBeenCalledTimes(2)
+                    expect(window.fetch).toHaveBeenCalledWith(
+                        '/verifyAirbnbAccount',
+                        expect.objectContaining({
+                            method: 'POST',
+                            body: JSON.stringify({id: "1", captchaComplete: true}),
+                        }),
+                    )
+                });
+
+            })
+
+            it('hides modal on successful captcha verification', async () => {
+
+                // next
+
+            })
+
         })
 
-        it('Renders as a form', async () => {
+        describe('Contact Airbnb verification', () => {
 
-            expect(screen.getByRole('form')).toBeInTheDocument();
+            beforeEach(async () => {
+                setUpVerificationMethods("contact_airbnb");
+            })
+
+            it('displays only the relevant text', async () => {
+
+                expect(screen.queryByText(/.*Airbnb wants to confirm that you are a real person and not a robot.*/)).not.toBeInTheDocument();
+                expect(screen.queryByText(/.*Airbnb is temporarily not allowing third party tools to authenticate.*/)).toBeInTheDocument();
+                expect(screen.queryByText(/.*Host Tools lost connection with Airbnb.*/)).not.toBeInTheDocument();
+                expect(screen.queryByText(/.*Please choose from one of the options below.*/)).not.toBeInTheDocument();
+
+            })
+
+        })
+
+        describe('Verification blocked', () => {
+
+            beforeEach(async () => {
+                setUpVerificationMethods("hard_block_message");
+            })
+
+            it('displays only the relevant text', async () => {
+
+                expect(screen.queryByText(/.*Airbnb wants to confirm that you are a real person and not a robot.*/)).not.toBeInTheDocument();
+                expect(screen.queryByText(/.*Airbnb is temporarily not allowing third party tools to authenticate.*/)).not.toBeInTheDocument();
+                expect(screen.queryByText(/.*Host Tools lost connection with Airbnb.*/)).toBeInTheDocument();
+                expect(screen.queryByText(/.*Please choose from one of the options below.*/)).not.toBeInTheDocument();
+
+            })
+
+        })
+
+        describe('Choose your verification', () => {
+
+            beforeEach(async () => {
+                setUpVerificationMethods("test_verification_method");
+            })
+
+            it('displays only the relevant text', async () => {
+
+                expect(screen.queryByText(/.*Airbnb wants to confirm that you are a real person and not a robot.*/)).not.toBeInTheDocument();
+                expect(screen.queryByText(/.*Airbnb is temporarily not allowing third party tools to authenticate.*/)).not.toBeInTheDocument();
+                expect(screen.queryByText(/.*Host Tools lost connection with Airbnb.*/)).not.toBeInTheDocument();
+                expect(screen.queryByText(/.*Please choose from one of the options below.*/)).toBeInTheDocument();
+
+            })
 
         })
 
@@ -200,6 +286,24 @@ describe('AddAirbnbAccount', () => {
     // })
 
 })
+
+async function setUpVerificationMethods (verificationMethod, props) {
+    window.fetch.mockResolvedValueOnce({
+        ok: false,
+        json: async () => ({error: {id: "1", verificationMethods: [{type: verificationMethod}]}}),
+    });
+
+    renderAddAirbnbAccount(props ? props : emptyAddAirbnbAccountProps());
+
+    fireEvent.change(screen.getByLabelText('Airbnb Email'), {target: {value: "username@gmail.com"}});
+    fireEvent.change(screen.getByLabelText('Airbnb Password'), {target: {value: "password"}});
+
+    fireEvent.click(screen.getByText('Add Account'))
+
+    await waitFor(() => {
+        expect(screen.getByText("Verify Airbnb Account")).toBeInTheDocument();
+    });
+}
 
 function emptyAddAirbnbAccountProps() {
     return {
