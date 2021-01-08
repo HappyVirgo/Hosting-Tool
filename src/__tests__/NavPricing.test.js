@@ -1,5 +1,5 @@
 import React from "react";
-import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+import {render, screen, fireEvent, waitFor, cleanup} from "@testing-library/react";
 import {BrowserRouter} from "react-router-dom";
 import NavPricing from "@/admin/components/NavPricing";
 
@@ -140,23 +140,47 @@ describe("NavPricing", () => {
         expect(linkDom).toHaveAttribute("href", link.location);
     });
     test("check if search filter works well", async () => {
-        const {props} = setup();
+        const {props} = setup({
+            listings: [
+                {
+                    listingEnabled: true,
+                    airbnbName: "Happy 1 Airbnb",
+                    nickname: "happy1",
+                    airbnbUserID: "happy1-airbnbUserID",
+                    airbnbListingID: "happy1-airbnbListingID"
+                },
+                {
+                    listingEnabled: true,
+                    airbnbName: "Happy 2 Airbnb",
+                    nickname: "happy2",
+                    airbnbUserID: "happy2-airbnbUserID",
+                    airbnbListingID: "happy2-airbnbListingID"
+                },
+                {
+                    listingEnabled: true,
+                    airbnbName: "Sad Airbnb",
+                    nickname: "sad",
+                    airbnbUserID: "sad-airbnbUserID",
+                    airbnbListingID: "sad-airbnbListingID"
+                }
+            ]
+        });
         doClickShow();
         await waitFor(() => screen.getByText(/listings/i));
         expect(screen.getByRole("searchbox")).toBeInTheDocument();
         const input = screen.getByPlaceholderText("Filter...");
-        fireEvent.change(input, {target: {value: "happy1"}});
-        expect(input.value).toBe("happy1");
+        fireEvent.change(input, {target: {value: "happy"}});
+        expect(input.value).toBe("happy");
         const listings = props.user.listings.filter(
             listing => listing.nickname.search(input.value) !== -1
         );
+        cleanup();
         setup({
             listings
         });
-        expect(
-            screen.getByRole("link", {
-                name: "Pricing"
-            })
-        ).toHaveAttribute("href", "/pricing/happy1-airbnbUserID/happy1-airbnbListingID");
+        doClickShow();
+        await waitFor(() => screen.getByText(/happy1/i));
+        expect(screen.getByText(/happy1/i)).toBeInTheDocument();
+        expect(screen.queryByText(/sad/i)).not.toBeInTheDocument();
     });
 });
