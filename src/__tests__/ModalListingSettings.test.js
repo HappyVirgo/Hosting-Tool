@@ -412,6 +412,70 @@ describe('calendarExportCode', () => {
 
         expect(screen.getByDisplayValue("https://hosttools.com/ical/byte_01")).toBeInTheDocument();
     });
+});
 
+jest.mock("is-url", () => (url) => url === "url_calendar_valid" ? true : false);
+
+describe('CalendarURL', () => {
+    test('should add calendar url success', () => {
+        setup({
+            show: true,
+        });
+
+        screen.debug(screen.getByRole("textbox", {name: "Import Calendars"}));
+
+        fireEvent.change(screen.getByRole("textbox", {name: "Import Calendars"}), {target: {value: "url_calendar_valid"}});
+
+        fireEvent.click(screen.getByRole("button", {name: "Add"}));
+
+        expect(screen.queryByText("url_calendar_valid")).toBeInTheDocument();
+    });
+
+    test('should not add invalid calendar url', () => {
+        setup({
+            show: true,
+        });
+
+        fireEvent.change(screen.getByRole("textbox", {name: "Import Calendars"}), {target: {value: "url_calendar_invalid"}});
+
+        fireEvent.click(screen.getByRole("button", {name: "Add"}));
+
+        expect(screen.queryByText("url_calendar_invalid")).not.toBeInTheDocument();
+        expect(screen.queryByText("Please enter a valid iCal link.")).toBeInTheDocument();
+    });
+
+    test('should not add existing calendar url', () => {
+        setup({
+            show: true,
+        });
+
+        fireEvent.change(screen.getByRole("textbox", {name: "Import Calendars"}), {target: {value: "url_calendar_valid"}});
+
+        fireEvent.click(screen.getByRole("button", {name: "Add"}));
+
+        expect(screen.queryByText("url_calendar_valid")).toBeInTheDocument();
+
+        fireEvent.change(screen.getByRole("textbox", {name: "Import Calendars"}), {target: {value: "url_calendar_valid"}});
+
+        fireEvent.click(screen.getByRole("button", {name: "Add"}));
+        expect(screen.queryByText("The iCal link already exists.")).toBeInTheDocument();
+    });
+
+    test('should delete calendar url successfuly', () => {
+        setup({
+            show: true,
+        });
+
+        fireEvent.change(screen.getByRole("textbox", {name: "Import Calendars"}), {target: {value: "url_calendar_valid"}});
+
+        fireEvent.click(screen.getByRole("button", {name: "Add"}));
+
+        expect(screen.queryByText("url_calendar_valid")).toBeInTheDocument();
+
+        const buttonDeleteCalUrl = screen.queryByText("url_calendar_valid").nextSibling;
+        fireEvent.click(buttonDeleteCalUrl);
+
+        expect(screen.queryByText("url_calendar_valid")).not.toBeInTheDocument();
+    });
 });
 
