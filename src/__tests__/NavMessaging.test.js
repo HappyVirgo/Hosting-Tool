@@ -159,7 +159,9 @@ describe("NavMessaging", () => {
         const input = screen.getByPlaceholderText("Filter...");
         fireEvent.change(input, {target: {value: "happy1"}});
         expect(input.value).toBe("happy1");
-        const listings = props.user.listings.filter(listing => listing.nickname === input.value);
+        const listings = props.user.listings.filter(
+            listing => listing.nickname.search(input.value) !== -1
+        );
         setup({
             listings
         });
