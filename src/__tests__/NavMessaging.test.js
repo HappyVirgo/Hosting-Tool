@@ -84,7 +84,7 @@ describe("NavMessaging", () => {
         await waitFor(() => screen.getByText("Happy 2 Airbnb"));
         expect(screen.getByText("Happy 2 Airbnb")).toBeInTheDocument();
     });
-    test("shouldn't show if listingEnabled is false", async() => {
+    test("shouldn't show if listingEnabled is false", async () => {
         setup({
             listings: [
                 {
@@ -114,7 +114,7 @@ describe("NavMessaging", () => {
         await waitFor(() => screen.getByText("happy2"));
         expect(screen.queryByText("happy1")).not.toBeInTheDocument();
         expect(screen.queryByText("happy2")).toBeInTheDocument();
-    })
+    });
     test("should render if there is only one listing", async () => {
         setup({
             listings: [
@@ -150,5 +150,23 @@ describe("NavMessaging", () => {
             name: link.text
         });
         expect(linkDom).toHaveAttribute("href", link.location);
+    });
+    test("check if search filter works well", async () => {
+        const {props} = setup();
+        doClickShow();
+        await waitFor(() => screen.getByText(/happy1/i));
+        expect(screen.getByRole("searchbox")).toBeInTheDocument();
+        const input = screen.getByPlaceholderText("Filter...");
+        fireEvent.change(input, {target: {value: "happy1"}});
+        expect(input.value).toBe("happy1");
+        const listings = props.user.listings.filter(listing => listing.nickname === input.value);
+        setup({
+            listings
+        });
+        expect(
+            screen.getByRole("link", {
+                name: "Messaging"
+            })
+        ).toHaveAttribute("href", "/messaging/happy1-airbnbUserID/happy1-airbnbListingID");
     });
 });
