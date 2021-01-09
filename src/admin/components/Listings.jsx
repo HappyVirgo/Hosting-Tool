@@ -32,6 +32,14 @@ class Listings extends Component {
         TagManager.dataLayer(tagManagerArgs);
     }
 
+    handleShowListingSettingModal(listing) {
+        this.setState({listing, showListingSettingsModal: true});
+    }
+
+    handleHideListingSettingModal() {
+        this.setState({showListingSettingsModal: false});
+    }
+
     async onRefresh() {
         try {
             const {updateUser} = this.props;
@@ -40,14 +48,6 @@ class Listings extends Component {
             console.log("error", error);
             throw error;
         }
-    }
-
-    handleShowListingSettingModal(listing) {
-        this.setState({listing, showListingSettingsModal: true});
-    }
-
-    handleHideListingSettingModal() {
-        this.setState({showListingSettingsModal: false});
     }
 
     render() {

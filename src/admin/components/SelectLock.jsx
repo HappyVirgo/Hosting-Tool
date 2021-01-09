@@ -45,10 +45,14 @@ const Option = ({children, ...props}) => {
     const icon = augustIcon;
     return (
         <components.Option {...props}>
-            <img src={icon} className="icon buttonHeight mg-r-5" />
+            <img alt="" src={icon} className="icon buttonHeight mg-r-5" />
             <div className="text-truncate">{children}</div>
         </components.Option>
     );
+};
+
+Option.propTypes = {
+    children: PropTypes.string.isRequired
 };
 
 SelectLock.propTypes = {
