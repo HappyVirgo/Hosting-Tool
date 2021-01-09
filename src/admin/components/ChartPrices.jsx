@@ -23,7 +23,7 @@ class ChartPrices extends Component {
         this.handleZoomChange = this.handleZoomChange.bind(this);
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const newPrices = [];
         for (let i = 0; i < 365; i += 1) {
             newPrices.push({
@@ -42,7 +42,7 @@ class ChartPrices extends Component {
         });
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {prices, listing, channel} = this.props;
         const nextPrices = nextProps.prices.map(price => {
             let {date, localDate} = price;

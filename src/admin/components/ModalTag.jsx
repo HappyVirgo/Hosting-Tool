@@ -44,7 +44,7 @@ class ModalTag extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {show} = this.props;
         const nextShow = nextProps.show;
         if (nextShow && show !== nextShow) {
@@ -165,9 +165,9 @@ class ModalTag extends Component {
                         </div>
                         {warnings.length !== 0 && (
                             <div className="form-group">
-                                {warnings.map(warning => {
+                                {warnings.map((warning, idx) => {
                                     return (
-                                        <div className="alert alert-warning">
+                                        <div key={idx} className="alert alert-warning">
                                             <strong>Warning: </strong>
                                             {warning}
                                         </div>
