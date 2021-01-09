@@ -44,15 +44,23 @@ function SelectListing(props) {
 
 const Option = ({children, ...props}) => {
     let icon = airbnbIcon;
-    if (props.data.source === "HomeAway") {
+    const {data} = props;
+    if (data.source === "HomeAway") {
         icon = homeawayIcon;
     }
     return (
         <components.Option {...props}>
-            <img src={icon} className="icon buttonHeight mg-r-5" />
+            <img alt="" src={icon} className="icon buttonHeight mg-r-5" />
             <div className="text-truncate">{children}</div>
         </components.Option>
     );
+};
+
+Option.propTypes = {
+    children: PropTypes.string.isRequired,
+    data: PropTypes.shape({
+        source: PropTypes.string
+    }).isRequired
 };
 
 SelectListing.propTypes = {

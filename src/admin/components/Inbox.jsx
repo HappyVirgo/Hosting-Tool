@@ -725,7 +725,7 @@ function Inbox() {
                         <div className="az-chat-body">
                             <div className="content-inner">
                                 {showSpinner[reservation._id] && (
-                                    <label className="az-chat-time">
+                                    <label htmlFor="loader" className="az-chat-time">
                                         <span>
                                             <FaCircleNotch className="fa-spin mr-1" />
                                             &nbsp;Loading...

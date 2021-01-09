@@ -1,21 +1,24 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+
 import SelectLock from "../admin/components/SelectLock";
 
 const setup = bindings => {
     const props = {
-        options: [{
-            label: "Item 1",
-            value: "item1",
-        },
-        {
-            label: "Item 2",
-            value: "item2",
-        },
-        {
-            label: "Item 3",
-            value: "item3",
-        }],
+        options: [
+            {
+                label: "Item 1",
+                value: "item1"
+            },
+            {
+                label: "Item 2",
+                value: "item2"
+            },
+            {
+                label: "Item 3",
+                value: "item3"
+            }
+        ],
         onSelectedOption: jest.fn(),
         ...bindings
     };

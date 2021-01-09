@@ -54,6 +54,7 @@ jest.mock("react-chartjs-2", () => ({
             }
         );
 
+        /* eslint global-require: 0 */
         const {format: formatter} = require("date-fns");
 
         return (
