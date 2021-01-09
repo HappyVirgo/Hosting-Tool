@@ -1,5 +1,6 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+
 import SelectEvent from "../admin/components/SelectEvent";
 
 const setup = bindings => {
@@ -44,7 +45,7 @@ test("should call `onSelectedOption` props when select new value", async () => {
 
     expect(queryByText("Number of Guests Changed")).toBeInTheDocument();
     expect(props.onSelectedOption).toHaveBeenCalledWith({
-      value: "numberOfGuestsChanged",
-      label: "Number of Guests Changed"
-  });
+        value: "numberOfGuestsChanged",
+        label: "Number of Guests Changed"
+    });
 });
