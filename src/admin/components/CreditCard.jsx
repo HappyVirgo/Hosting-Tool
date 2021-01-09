@@ -249,12 +249,16 @@ class CreditCard extends Component {
                     {errors.name && <div className="alert alert-danger">{errors.name}</div>}
                 </div>
                 <div className="form-group">
-                    <label className="az-content-label tx-11 tx-medium tx-gray-600">
+                    <label
+                        htmlFor="card-number"
+                        className="az-content-label tx-11 tx-medium tx-gray-600"
+                    >
                         Card Number
                     </label>
                     <div className={cardNumberClasses}>
                         <div className="flex-grow-1">
                             <CardNumberElement
+                                id="card-number"
                                 onChange={this.handleStripeElementChange}
                                 onReady={c => {
                                     this.cardNumber = c;
@@ -281,6 +285,7 @@ class CreditCard extends Component {
                             <div className={cardExpiryClasses}>
                                 <div className="d-table-cell align-middle">
                                     <CardExpiryElement
+                                        id="card-expiry"
                                         onChange={this.handleStripeElementChange}
                                         onReady={c => {
                                             this.cardExpiry = c;
@@ -291,12 +296,16 @@ class CreditCard extends Component {
                             </div>
                         </div>
                         <div className="col-sm-5 mg-t-20 mg-sm-t-0">
-                            <label className="az-content-label tx-11 tx-medium tx-gray-600">
+                            <label
+                                htmlFor="card-cvc"
+                                className="az-content-label tx-11 tx-medium tx-gray-600"
+                            >
                                 CVC
                             </label>
                             <div className={cardCVCClasses}>
                                 <div className="d-table-cell align-middle">
                                     <CardCVCElement
+                                        id="card-cvc"
                                         onChange={this.handleStripeElementChange}
                                         onReady={c => {
                                             this.cardCVC = c;

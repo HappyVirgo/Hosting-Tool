@@ -48,14 +48,7 @@
                 }
             }
         ],
-        "jsx-a11y/label-has-for": [
-            "error",
-            {
-                "required": {
-                    "some": ["nesting", "id"]
-                }
-            }
-        ],
+        "jsx-a11y/label-has-for": "off",
         "max-len": [
             "error",
             500,
@@ -66,12 +59,36 @@
                 "ignoreStrings": true
             }
         ],
+        "camelcase": [
+            "error",
+            {
+                "properties": "never",
+                "allow": [
+                    "UNSAFE_componentWillMount",
+                    "UNSAFE_componentWillReceiveProps"
+                ]
+            }
+        ],
         "no-await-in-loop": "off",
         "no-shadow": "off",
         "consistent-return": "off",
         "no-param-reassign": "off",
         "import/order": ["error", {"newlines-between": "always"}],
-        "react/jsx-curly-newline": "off"
+        "react/sort-comp": ["error", {
+            "order": [
+                "static-methods",
+                "instance-variables",
+                "lifecycle",
+                "everything-else",
+                "render"
+            ]
+        }],
+        "react/jsx-curly-newline": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/state-in-constructor": "off",
+        "react/static-property-placement": "off",
+        "react/no-array-index-key": "off",
+        "react/destructuring-assignment": "off"
     },
     "overrides": [
         {

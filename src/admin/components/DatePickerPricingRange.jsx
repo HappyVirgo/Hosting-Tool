@@ -32,7 +32,7 @@ class DatePickerPricingRange extends Component {
         this.handleResetClick = this.handleResetClick.bind(this);
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const {startDate, endDate, onSelectedDates} = this.props;
         if (startDate && endDate) {
             this.setState({
@@ -45,7 +45,7 @@ class DatePickerPricingRange extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {startDate, endDate, error} = this.props;
         const nextStartDate = nextProps.startDate;
         const nextEndDate = nextProps.endDate;

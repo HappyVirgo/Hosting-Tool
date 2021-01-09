@@ -1,5 +1,6 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+
 import SelectPricingOptions from "../admin/components/SelectPricingOptions";
 
 const setup = bindings => {
@@ -43,5 +44,8 @@ test("should call `onSelectedOption` props when select new option", async () => 
     fireEvent.click(queryByText("Decrease by Amount"));
 
     expect(queryByText("Decrease by Amount")).toBeInTheDocument();
-    expect(props.onSelectedOption).toHaveBeenCalledWith({label: "Decrease by Amount", value: "decreaseByPrice"});
+    expect(props.onSelectedOption).toHaveBeenCalledWith({
+        label: "Decrease by Amount",
+        value: "decreaseByPrice"
+    });
 });

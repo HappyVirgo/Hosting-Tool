@@ -414,9 +414,8 @@ ModalListingGroup.propTypes = {
     listingGroup: PropTypes.shape({
         listings: PropTypes.arrayOf(PropTypes.shape({})),
         accessCode: PropTypes.string
-    }),
-    listings: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    updateUser: PropTypes.func.isRequired
+    }).isRequired,
+    listings: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 const ConnectedModalListingGroup = props => (

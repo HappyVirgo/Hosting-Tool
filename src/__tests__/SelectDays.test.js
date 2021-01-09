@@ -1,5 +1,6 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+
 import SelectDays from "../admin/components/SelectDays";
 
 const setup = bindings => {
@@ -44,7 +45,7 @@ test("should call `onSelectedOption` props when select new value", async () => {
 
     expect(queryByText("13 Days Before")).toBeInTheDocument();
     expect(props.onSelectedOption).toHaveBeenCalledWith({
-      value: -13,
-      label: "13 Days Before"
-  });
+        value: -13,
+        label: "13 Days Before"
+    });
 });

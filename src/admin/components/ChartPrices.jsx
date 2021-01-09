@@ -451,28 +451,28 @@ class ChartPrices extends Component {
                     <div className="pricing-overview">
                         <div className="media">
                             <div className="media-body">
-                                <label>Min Price</label>
+                                <label htmlFor="min-price">Min Price</label>
                                 <h4>{minPrice}</h4>
                                 <span>PER NIGHT</span>
                             </div>
                         </div>
                         <div className="media">
                             <div className="media-body">
-                                <label>Max Price</label>
+                                <label htmlFor="max-price">Max Price</label>
                                 <h4>{maxPrice}</h4>
                                 <span>PER NIGHT</span>
                             </div>
                         </div>
                         <div className="media">
                             <div className="media-body">
-                                <label>14 Days</label>
+                                <label htmlFor="14-days">14 Days</label>
                                 <h4>{occupancy14Days}</h4>
                                 <span>OCCUPANCY</span>
                             </div>
                         </div>
                         <div className="media">
                             <div className="media-body">
-                                <label>30 Days</label>
+                                <label htmlFor="30-days">30 Days</label>
                                 <h4>{occupancy30Days}</h4>
                                 <span>OCCUPANCY</span>
                             </div>

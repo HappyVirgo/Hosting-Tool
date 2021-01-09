@@ -1380,7 +1380,8 @@ ModalEditMessageRule.propTypes = {
     airbnbUserID: PropTypes.string.isRequired,
     airbnbListingID: PropTypes.string,
     messageRule: PropTypes.shape({
-        _id: PropTypes.string
+        _id: PropTypes.string,
+        event: PropTypes.string
     }).isRequired,
     listing: listingType.isRequired,
     user: userType.isRequired

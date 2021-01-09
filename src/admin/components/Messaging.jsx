@@ -128,7 +128,7 @@ class Messaging extends Component {
         }
     }
 
-    async componentWillReceiveProps(nextProps) {
+    async UNSAFE_componentWillReceiveProps(nextProps) {
         const {
             match: {
                 params: {airbnbUserID, airbnbListingID}
