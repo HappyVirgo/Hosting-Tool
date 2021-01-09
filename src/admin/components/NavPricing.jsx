@@ -78,7 +78,7 @@ function NavPricing(props) {
                 items.push(
                     <NavDropdown.Item
                         as={Link}
-                        to={`/admin/pricing/${listing.airbnbUserID}/${listing.airbnbListingID}`}
+                        to={`/pricing/${listing.airbnbUserID}/${listing.airbnbListingID}`}
                         className="nav-sub-link justify-content-between d-flex"
                         key={`priceRuleNavItem${listing.airbnbUserID}${listing.airbnbListingID}`}
                     >
@@ -155,7 +155,7 @@ function NavPricing(props) {
         menu = (
             <Nav.Link
                 as={NavLink}
-                to={`/admin/pricing/${filteredListings[0].airbnbUserID}/${filteredListings[0].airbnbListingID}`}
+                to={`/pricing/${filteredListings[0].airbnbUserID}/${filteredListings[0].airbnbListingID}`}
                 className="mr-2"
             >
                 <FiCalendar className="d-block d-md-none" />

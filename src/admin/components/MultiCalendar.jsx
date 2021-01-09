@@ -126,7 +126,7 @@ function MultiCalendar() {
 
     function showSelectedReservation(reservation) {
         if (reservation.source === "Airbnb" || reservation.source === "HomeAway") {
-            history.push(`/admin/inbox/${reservation._id}`);
+            history.push(`/inbox/${reservation._id}`);
         } else {
             setShowReservationSettings(true);
             setReservation(reservation);

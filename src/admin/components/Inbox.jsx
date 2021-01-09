@@ -156,7 +156,7 @@ function Inbox() {
     useEffect(() => {
         const {_id, isFiller} = reservation;
         if (!isFiller) {
-            history.replace(`/admin/inbox/${_id}${search}`);
+            history.replace(`/inbox/${_id}${search}`);
         }
     }, [reservation]);
 
@@ -207,7 +207,7 @@ function Inbox() {
                 setThreadErrors(threadErrors => {
                     return {...threadErrors, ...newErrors};
                 });
-                // history.push("/admin");
+                // history.push("/");
             } else if (response.ok) {
                 const newShowSpinner = {};
                 newShowSpinner[_id] = false;
@@ -235,7 +235,7 @@ function Inbox() {
                 setThreadErrors(threadErrors => {
                     return {...threadErrors, ...newErrors};
                 });
-                // history.push("/admin");
+                // history.push("/");
             }
         } catch (error) {
             console.log("error: ", error);
@@ -288,7 +288,7 @@ function Inbox() {
                 // }, 5000);
             } else {
                 console.log("response", response);
-                // history.push("/admin");
+                // history.push("/");
             }
             await setShowSpinner(showSpinner => {
                 return {...showSpinner, sending: false};
@@ -356,7 +356,7 @@ function Inbox() {
                     }, 2000);
                 } else {
                     console.log("response", response);
-                    // history.push("/admin");
+                    // history.push("/");
                 }
             }
         } catch (error) {
@@ -415,7 +415,7 @@ function Inbox() {
                 });
             } else {
                 console.log("response", response);
-                // history.push("/admin");
+                // history.push("/");
             }
         } catch (error) {
             const newShowSpinner = {};
@@ -434,7 +434,7 @@ function Inbox() {
 
     async function handleSearch(event) {
         event.preventDefault();
-        history.push(`/admin/inbox?q=${encodeURIComponent(query)}`);
+        history.push(`/inbox?q=${encodeURIComponent(query)}`);
     }
 
     async function handleClearQuery() {

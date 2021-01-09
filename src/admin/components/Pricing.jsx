@@ -104,7 +104,7 @@ function Pricing(props) {
     useEffect(() => {
         try {
             if (!airbnbUserID || !airbnbListingID) {
-                window.location = "/admin";
+                window.location = "/";
             }
             getPrices();
             getPricingRules();
@@ -311,7 +311,7 @@ function Pricing(props) {
                     await handleRefreshPrices();
                 } else {
                     console.error("response", response);
-                    window.location = "/admin";
+                    window.location = "/";
                 }
             }
             setShowConfirmModal(false);
@@ -356,7 +356,7 @@ function Pricing(props) {
                 });
             } else {
                 console.error("response", response);
-                // window.location = "/admin";
+                // window.location = "/";
             }
         } catch (error) {
             console.error("error", error);
@@ -423,7 +423,7 @@ function Pricing(props) {
                     return {...showSpinner, ...{syncPricing: false}};
                 });
                 console.error("response", response);
-                // window.location = "/admin";
+                // window.location = "/";
             }
         } catch (error) {
             console.error("error", error);
@@ -450,7 +450,7 @@ function Pricing(props) {
                 await handleRefreshPrices();
             } else {
                 console.error("response", response);
-                // window.location = "/admin";
+                // window.location = "/";
             }
         } catch (error) {
             console.error("error", error);
@@ -477,7 +477,7 @@ function Pricing(props) {
     function showSelectedReservation(reservation) {
         closeSelectedDates();
         if (reservation.source === "Airbnb" || reservation.source === "HomeAway") {
-            history.push(`/admin/inbox/${reservation._id}`);
+            history.push(`/inbox/${reservation._id}`);
         } else {
             const showReservationSettings = true;
             setShowReservationSettings(showReservationSettings);

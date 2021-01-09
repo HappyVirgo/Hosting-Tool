@@ -175,7 +175,7 @@ function SortablePricingRules(props) {
                 onReorderPricing();
             } else {
                 console.error("response", response);
-                window.location = "/admin";
+                window.location = "/";
             }
         } catch (error) {
             console.error("error", error);

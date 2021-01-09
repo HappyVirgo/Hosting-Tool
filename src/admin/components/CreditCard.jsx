@@ -359,7 +359,7 @@ class CreditCard extends Component {
                 <div className="mg-t-20">
                     <b>Note: </b>
                     {"You can enable or disable listings on the "}
-                    <Link to="/admin/settings">account settings page</Link>
+                    <Link to="/settings">account settings page</Link>
                     {" and you will only be charged for enabled listings."}
                 </div>
                 <button

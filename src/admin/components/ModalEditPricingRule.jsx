@@ -72,7 +72,7 @@ function ModalEditPricingRule(props) {
                 setPricingRules(pricingRules);
             } else {
                 console.error("response", response);
-                window.location = "/admin";
+                window.location = "/";
             }
         } catch (error) {
             console.error("error: ", error);
@@ -125,7 +125,7 @@ function ModalEditPricingRule(props) {
                     setShowSpinner(false);
                 } else {
                     console.error("response", response);
-                    window.location = "/admin";
+                    window.location = "/";
                 }
                 // Don't hide the spinner here, hide it on load
                 // That way it's visible until the modal closes
