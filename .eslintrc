@@ -79,6 +79,13 @@
             "rules": {
                 "no-console": ["warn", { "allow": ["warn", "error"] }]
             }
+        },
+        {
+            "files": [ "src/__tests__/*.test.+(js|jsx)" ],
+            "rules": {
+                "react/prop-types": "off",
+                "react/jsx-props-no-spreading": "off"
+            }
         }
     ]
 }
