@@ -102,7 +102,7 @@ class Turnovers extends Component {
             this.setState({turnovers});
         } else {
             console.log("response", response);
-            window.location = "/admin";
+            window.location = "/";
         }
     }
 

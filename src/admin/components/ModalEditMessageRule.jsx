@@ -117,7 +117,7 @@ const cleanUpText = (type, messageRule) => {
     }
     const messages = Object.keys(messageRule[type]).reduce((result, language) => {
         const text = messageRule[type][language];
-        result[language] = text.trim();
+        result[language] = text?.trim();
         return result;
     }, {});
     return messages;
@@ -170,7 +170,7 @@ function ModalEditMessageRule(props) {
                 await setMessageRules(messageRules);
             } else {
                 console.error("response", response);
-                window.location = "/admin";
+                window.location = "/";
             }
         } catch (error) {
             console.error("error: ", error);
@@ -220,7 +220,7 @@ function ModalEditMessageRule(props) {
                     await setShowSpinner(false);
                 } else {
                     console.error("response", response);
-                    // window.location = "/admin";
+                    // window.location = "/";
                 }
             }
         } catch (error) {
@@ -267,13 +267,14 @@ function ModalEditMessageRule(props) {
             if (!messageRule.sms) {
                 formIsValid = false;
                 errors.sms = "Please enter a phone number.";
-            }
-            const numberCheck = Phone(messageRule.sms, "", true);
-            if (!numberCheck || (numberCheck[1] !== "USA" && numberCheck[1] !== "CAN")) {
-                formIsValid = false;
-                errors.sms = "Please enter a valid United States or Canadian phone number.";
             } else {
-                messageRule.sms = numberCheck[0].substr(2);
+                const numberCheck = Phone(messageRule.sms, "", true);
+                if (!numberCheck || (numberCheck[1] !== "USA" && numberCheck[1] !== "CAN")) {
+                    formIsValid = false;
+                    errors.sms = "Please enter a valid United States or Canadian phone number.";
+                } else {
+                    messageRule.sms = numberCheck[0].substr(2);
+                }
             }
         }
         // reviewMessages
@@ -1362,7 +1363,9 @@ function ModalEditMessageRule(props) {
                         className="btn btn-outline-primary"
                         onClick={handleSubmit}
                     >
-                        {showSpinner && <FaCircleNotch className="fa-spin mr-1" />}
+                        {showSpinner && (
+                            <FaCircleNotch data-testid="spinner" className="fa-spin mr-1" />
+                        )}
                         Save
                     </button>
                 </Modal.Footer>

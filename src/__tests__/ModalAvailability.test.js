@@ -1,6 +1,7 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import ModalAvailability from "@/admin/components/ModalAvailability";
+
+import ModalAvailability from "../admin/components/ModalAvailability";
 
 jest.mock("date-fns-tz", () => ({
     __esModule: true,

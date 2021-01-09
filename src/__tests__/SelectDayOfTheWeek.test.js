@@ -1,6 +1,7 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import SelectDayOfTheWeek from "@/admin/components/SelectDayOfTheWeek";
+
+import SelectDayOfTheWeek from "../admin/components/SelectDayOfTheWeek";
 
 const setup = bindings => {
     const props = {
@@ -42,5 +43,8 @@ test("should call `onSelectedOption` props when select new day", async () => {
     fireEvent.click(queryByText("On Tuesday"));
 
     expect(queryByText("On Tuesday")).toBeInTheDocument();
-    expect(props.onSelectedOption).toHaveBeenCalledWith({label: "On Tuesday", value: "tuesday"});
+    expect(props.onSelectedOption).toHaveBeenCalledWith({
+        label: "On Tuesday",
+        value: "tuesday"
+    });
 });

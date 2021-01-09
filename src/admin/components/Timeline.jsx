@@ -268,14 +268,14 @@ function Timeline(props) {
                                     message.status !== "disabled" && <Dropdown.Divider />}
                                 {message.hasMatchingMessageRule && !message.isGlobalMessageRule && (
                                     <Dropdown.Item
-                                        href={`/admin/messaging/${message.airbnbUserID}/${message.airbnbListingID}`}
+                                        href={`/messaging/${message.airbnbUserID}/${message.airbnbListingID}`}
                                     >
                                         <FiEdit2 className="mr-1" />
                                         Edit Rule
                                     </Dropdown.Item>
                                 )}
                                 {message.hasMatchingMessageRule && message.isGlobalMessageRule && (
-                                    <Dropdown.Item href="/admin/messaging/all">
+                                    <Dropdown.Item href="/messaging/all">
                                         <FiEdit2 className="mr-1" />
                                         Edit Rule
                                     </Dropdown.Item>

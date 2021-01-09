@@ -101,17 +101,13 @@ function Errors(props) {
                             <p className="card-text">
                                 Your account is no longer active which means that all Host Tools
                                 automations have stopped for your listings. Please visit the&nbsp;
-                                <Link to="/admin/billing">billing page</Link>
+                                <Link to="/billing">billing page</Link>
                                 &nbsp;and add your credit card to subscribe and re-activate your
                                 account.
                             </p>
                         </div>
                         <div className="card-footer bd-t tx-right">
-                            <Link
-                                to="/admin/billing"
-                                roll="button"
-                                className="btn btn-outline-primary"
-                            >
+                            <Link to="/billing" roll="button" className="btn btn-outline-primary">
                                 <FiCreditCard className="mr-1" />
                                 Go To Billing
                             </Link>
@@ -159,13 +155,13 @@ function Errors(props) {
                                 <p className="card-text">
                                     Your account need to be authenticated. Please browse to
                                     the&nbsp;
-                                    <Link to="/admin/settings">settings page</Link>
+                                    <Link to="/settings">settings page</Link>
                                     &nbsp;and link your account by re-entering your credentials.
                                 </p>
                             </div>
                             <div className="card-footer bd-t tx-right">
                                 <Link
-                                    to="/admin/settings"
+                                    to="/settings"
                                     roll="button"
                                     className="btn btn-outline-primary"
                                 >
@@ -232,7 +228,7 @@ function Errors(props) {
                                 </p>
                                 <p className="card-text mg-t-10">
                                     If you recently added a new listing, go to the&nbsp;
-                                    <Link to="/admin/settings">settings page</Link>
+                                    <Link to="/settings">settings page</Link>
                                     &nbsp;on Host Tools and click the &quot;Refresh&quot; button
                                     next to your account to download your latest listings.
                                 </p>
@@ -276,13 +272,13 @@ function Errors(props) {
                                 <p className="card-text">
                                     All your listings have been disabled. This means you&apos;ve
                                     effectively paused Host Tools. Please visit the&nbsp;
-                                    <Link to="/admin/settings">settings page</Link>
+                                    <Link to="/settings">settings page</Link>
                                     &nbsp;and re-enable your listings.
                                 </p>
                             </div>
                             <div className="card-footer bd-t tx-right">
                                 <Link
-                                    to="/admin/settings"
+                                    to="/settings"
                                     roll="button"
                                     className="btn btn-outline-primary"
                                 >
@@ -299,17 +295,13 @@ function Errors(props) {
                             <p className="card-text">
                                 This feature is only available to listing that are currently active
                                 and listed. Please re-list your listing, visit the&nbsp;
-                                <Link to="/admin/settings">settings page</Link>
+                                <Link to="/settings">settings page</Link>
                                 &nbsp;and click the &quot;Refresh&quot; button next to your account
                                 to download the latest listing data.
                             </p>
                         </div>
                         <div className="card-footer bd-t tx-right">
-                            <Link
-                                to="/admin/settings"
-                                roll="button"
-                                className="btn btn-outline-primary"
-                            >
+                            <Link to="/settings" roll="button" className="btn btn-outline-primary">
                                 <FiSettings className="mr-1" />
                                 Settings
                             </Link>
@@ -373,7 +365,7 @@ function Errors(props) {
                                     To create a message rule, click on Messaging at the menu at the
                                     top of the page.
                                 </p>
-                                <Link to="/admin/FAQ#messageRules">More about message rules</Link>
+                                <Link to="/FAQ#messageRules">More about message rules</Link>
                             </div>
                         </div>
                     )}
@@ -396,7 +388,7 @@ function Errors(props) {
                                     To create a message rule, click on Messaging at the menu at the
                                     top of the page.
                                 </p>
-                                <Link to="/admin/FAQ#messageRules">More about message rules</Link>
+                                <Link to="/FAQ#messageRules">More about message rules</Link>
                             </div>
                         </div>
                     )} */}
@@ -411,7 +403,7 @@ function Errors(props) {
                                 the templates, and then customize it as needed. Once you save your
                                 message rule, it&apos;s active.
                             </p>
-                            <Link to="/admin/FAQ#messageRules">More about message rules</Link>
+                            <Link to="/FAQ#messageRules">More about message rules</Link>
                         </div>
                         <div className="card-footer bd-t tx-right">
                             <button
@@ -511,7 +503,7 @@ function Errors(props) {
                                     Tools. If you don&apos;t want that, please add a pricing rule or
                                     pause the pricing tool.
                                 </p>
-                                <Link to="/admin/FAQ#pricingRules">More about pricing rules</Link>
+                                <Link to="/FAQ#pricingRules">More about pricing rules</Link>
                             </div>
                             <div className="card-footer bd-t tx-right">
                                 <button
@@ -540,7 +532,7 @@ function Errors(props) {
                                     rules that define your listing&apos;s prices. Click the
                                     &quot;Add Rule&quot; button to create the first pricing rule.
                                 </p>
-                                <Link to="/admin/FAQ#pricingRules">More about pricing rules</Link>
+                                <Link to="/FAQ#pricingRules">More about pricing rules</Link>
                             </div>
                             <div className="card-footer bd-t tx-right">
                                 <button
