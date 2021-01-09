@@ -109,10 +109,7 @@ const SortableList = SortableContainer(props => {
                 />
             ))}
             {pricingRules.length === 0 && (
-                <li
-                    className="list-group-item d-flex align-items-center justify-content-between"
-                    ng-hide="pricingRules.length"
-                >
+                <li className="list-group-item d-flex align-items-center justify-content-between">
                     No pricing rules have been added
                     <button
                         type="button"
