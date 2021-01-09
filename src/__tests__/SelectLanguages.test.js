@@ -1,6 +1,6 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import SelectLanguages from "@/admin/components/SelectLanguages";
+import SelectLanguages from "../admin/components/SelectLanguages";
 
 const setup = bindings => {
     const props = {
