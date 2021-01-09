@@ -1,6 +1,6 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import SelectEvent from "@/admin/components/SelectEvent";
+import SelectEvent from "../admin/components/SelectEvent";
 
 const setup = bindings => {
     const props = {

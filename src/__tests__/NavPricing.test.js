@@ -1,7 +1,8 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor, cleanup} from "@testing-library/react";
 import {BrowserRouter} from "react-router-dom";
-import NavPricing from "@/admin/components/NavPricing";
+
+import NavPricing from "../admin/components/NavPricing";
 
 const setup = overrides => {
     const props = {

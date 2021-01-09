@@ -1,10 +1,11 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import {createMemoryHistory} from 'history';
+import {createMemoryHistory} from "history";
 import {Router} from "react-router-dom";
-import Header from "@/admin/components/Header";
 
-jest.mock("@/admin/providers/UserProvider", () => {
+import Header from "../admin/components/Header";
+
+jest.mock("../admin/providers/UserProvider", () => {
     const UserContext = jest.requireActual("react").createContext({
         user: {
             isFiller: false,
