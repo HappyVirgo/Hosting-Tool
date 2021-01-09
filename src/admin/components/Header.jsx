@@ -250,7 +250,7 @@ function Header() {
         <div className="az-header">
             <div className="container">
                 <Navbar bg="transparent" expand="sm" className="flex-grow-1">
-                    <Navbar.Brand as={Link} to="/">
+                    <Navbar.Brand as={Link} to="/" data-testid="site-logo">
                         <img
                             src={logoBlack}
                             height="30"
