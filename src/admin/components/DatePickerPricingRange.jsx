@@ -29,7 +29,6 @@ class DatePickerPricingRange extends Component {
         this.state = this.constructor.getInitialState();
         this.handleDayClick = this.handleDayClick.bind(this);
         this.handleDayMouseEnter = this.handleDayMouseEnter.bind(this);
-        this.handleResetClick = this.handleResetClick.bind(this);
     }
 
     UNSAFE_componentWillMount() {
@@ -102,10 +101,6 @@ class DatePickerPricingRange extends Component {
         }
     }
 
-    handleResetClick() {
-        this.setState(this.constructor.getInitialState());
-    }
-
     render() {
         const {startDate, enteredTo, month, error} = this.state;
         const modifiers = {start: startDate, end: enteredTo};
@@ -137,13 +132,17 @@ DatePickerPricingRange.propTypes = {
     onSelectedDates: PropTypes.func.isRequired,
     startDate: PropTypes.instanceOf(Date),
     endDate: PropTypes.instanceOf(Date),
-    error: PropTypes.string
+    error: PropTypes.shape({
+        specificDates: PropTypes.string
+    })
 };
 
 DatePickerPricingRange.defaultProps = {
     startDate: null,
     endDate: null,
-    error: ""
+    error: {
+        specificDates: ""
+    }
 };
 
 export default DatePickerPricingRange;
