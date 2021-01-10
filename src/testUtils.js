@@ -21,4 +21,8 @@ export const clickOnLabel = label => {
     fireEvent.click(screen.queryByLabelText(label), {checked: true});
 };
 
+export const mouseEnterOnLabel = label => {
+    fireEvent.mouseEnter(screen.queryByLabelText(label));
+};
+
 export const waiit = () => jest.requireActual("promise").resolve();
