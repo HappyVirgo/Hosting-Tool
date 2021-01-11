@@ -1,6 +1,7 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import {createMemoryHistory} from "history";
+
+import {createMemoryHistory} from 'history';
 import {Router} from "react-router-dom";
 import Header from "@/admin/components/Header";
 
@@ -11,22 +12,22 @@ jest.mock("@/admin/providers/UserProvider", () => {
             _id: "1",
             firstName: "Tomas",
             lastName: "Krones",
-            username: "Tom",
+            username: "t@hosttools.com",
             subscriptionStatus: "active",
             listings: [
                 {
                     listingEnabled: true,
                     airbnbName: "Happy 1 Airbnb",
                     nickName: "happy1",
-                    airbnbUserID: "1",
-                    airbnbListingID: "123"
+                    airbnbUserID: "happy1-airbnbUserID",
+                    airbnbListingID: "happy1-airbnbListingID"
                 },
                 {
                     listingEnabled: true,
                     airbnbName: "Happy 2 Airbnb",
                     nickName: "happy2",
-                    airbnbUserID: "2",
-                    airbnbListingID: "234"
+                    airbnbUserID: "happy2-airbnbUserID",
+                    airbnbListingID: "happy2-airbnbListingID"
                 }
             ],
             listingGroups: [

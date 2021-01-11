@@ -11,7 +11,7 @@ class ModalConfirm extends Component {
         this.handleConfirm = this.handleConfirm.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {show} = this.props;
         const nextShow = nextProps.show;
         if (nextShow && show !== nextShow) {

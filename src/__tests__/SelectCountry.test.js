@@ -1,6 +1,7 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import SelectCountry from "@/admin/components/SelectCountry";
+
+import SelectCountry from "../admin/components/SelectCountry";
 
 jest.mock("../../node_modules/country-region-data/data.json", () => [
     {
@@ -49,5 +50,8 @@ test("should call `onSelectedOption` props when change option", async () => {
     fireEvent.click(queryByText("Australia"));
 
     expect(queryByText("Australia")).toBeInTheDocument();
-    expect(props.onSelectedOption).toHaveBeenCalledWith({label: "Australia", value: "AU"});
+    expect(props.onSelectedOption).toHaveBeenCalledWith({
+        label: "Australia",
+        value: "AU"
+    });
 });

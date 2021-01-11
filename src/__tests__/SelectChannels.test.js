@@ -1,6 +1,7 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import SelectChannels from "@/admin/components/SelectChannels";
+
+import SelectChannels from "../admin/components/SelectChannels";
 
 const setup = bindings => {
     const props = {
@@ -47,5 +48,8 @@ test("should call `onSelectedOption` props when select new option", async () => 
     fireEvent.click(queryByText("Airbnb"));
 
     expect(queryByText("Airbnb")).toBeInTheDocument();
-    expect(props.onSelectedOption).toHaveBeenCalledWith({label: "Airbnb", value: "Airbnb"});
+    expect(props.onSelectedOption).toHaveBeenCalledWith({
+        label: "Airbnb",
+        value: "Airbnb"
+    });
 });

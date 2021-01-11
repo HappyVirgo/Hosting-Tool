@@ -21,7 +21,7 @@ function SideBarPriceDetails(props) {
         if (selectedDates.blocked) {
             setBlocked(selectedDates.blocked);
         }
-    }, [selectedDates.startDate, selectedDates.endDate]);
+    }, [selectedDates.startDate, selectedDates.endDate, showSpinner]);
 
     function handleToggle(field) {
         if (field === "blocked") {
@@ -169,6 +169,7 @@ function SideBarPriceDetails(props) {
                             type="checkbox"
                             className="custom-control-input"
                             id="blocked"
+                            data-testid="blocked-checkbox"
                             checked={blocked === true}
                             onChange={() => {
                                 handleToggle("blocked");
@@ -219,14 +220,14 @@ function SideBarPriceDetails(props) {
                             <div className="pricing-overview">
                                 <div className="media">
                                     <div className="media-body">
-                                        <label>Calculated</label>
+                                        <label htmlFor="calculated">Calculated</label>
                                         <h4>{selectedDates.priceFormatted}</h4>
                                         <span>PRICE</span>
                                     </div>
                                 </div>
                                 <div className="media">
                                     <div className="media-body">
-                                        <label>Current</label>
+                                        <label htmlFor="current">Current</label>
                                         <h4>{selectedDates.currentPriceFormatted}</h4>
                                         <span>PRICE</span>
                                     </div>

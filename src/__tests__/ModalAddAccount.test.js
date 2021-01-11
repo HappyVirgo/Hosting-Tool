@@ -1,8 +1,9 @@
 import React from "react";
 import {render, screen, fireEvent} from "@testing-library/react";
-import ModalAddAccount from "@/admin/components/ModalAddAccount";
 
-jest.mock("@/admin/providers/UserProvider", () => {
+import ModalAddAccount from "../admin/components/ModalAddAccount";
+
+jest.mock("../admin/providers/UserProvider", () => {
     const UserContext = jest.requireActual("react").createContext({
         user: {},
         updateUser: jest.fn()
