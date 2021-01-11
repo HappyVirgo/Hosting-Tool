@@ -34,7 +34,7 @@ class ModalListingGroup extends Component {
         this.generateAccessCode = this.generateAccessCode.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {show} = this.props;
         const nextShow = nextProps.show;
         if (nextShow && show !== nextShow) {
@@ -153,8 +153,6 @@ class ModalListingGroup extends Component {
             } else {
                 listingGroup[field] = "";
             }
-        } else {
-            listingGroup[field] = !listingGroup[field];
         }
         this.setState({listingGroup});
     }
@@ -323,7 +321,9 @@ class ModalListingGroup extends Component {
                                                     this.handleDeleteListing(listing);
                                                 }}
                                             >
-                                                <FiTrash2 />
+                                                <FiTrash2
+                                                    data-testid={`remove-listing-${listing._id}`}
+                                                />
                                             </button>
                                         </div>
                                     );
@@ -414,9 +414,8 @@ ModalListingGroup.propTypes = {
     listingGroup: PropTypes.shape({
         listings: PropTypes.arrayOf(PropTypes.shape({})),
         accessCode: PropTypes.string
-    }),
-    listings: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    updateUser: PropTypes.func.isRequired
+    }).isRequired,
+    listings: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 const ConnectedModalListingGroup = props => (

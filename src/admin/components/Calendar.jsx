@@ -177,7 +177,7 @@ function Calendar(props) {
                         disabled={isSameMonth(today, monthStart)}
                         onClick={prevMonth}
                     >
-                        <FiChevronLeft />
+                        <FiChevronLeft data-testid="prev-month" />
                     </button>
                     <button
                         type="button"
@@ -185,7 +185,7 @@ function Calendar(props) {
                         disabled={isSameMonth(today, addYears(monthStart, 1))}
                         onClick={nextMonth}
                     >
-                        <FiChevronRight />
+                        <FiChevronRight data-testid="next-month" />
                     </button>
                 </div>
                 <h4 className="mb-0">{format(currentDate, dateFormat)}</h4>

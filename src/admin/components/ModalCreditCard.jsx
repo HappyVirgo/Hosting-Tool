@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
 import {Modal} from "react-bootstrap";
 import {withRouter} from "react-router-dom";
 import {injectStripe} from "react-stripe-elements";
 
 import CreditCard from "./CreditCard";
 
-class ModalCreditCard extends Component {
+class ModalCreditCard extends PureComponent {
     render() {
         const {show, onHide, onSuccess, invoice, user, error} = this.props;
 

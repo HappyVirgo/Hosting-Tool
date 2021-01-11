@@ -41,7 +41,7 @@ export function buildCalendarArray(selectedDates, calendarArray) {
     });
 }
 
-export function updateSelectedDates(calendarArray, listing, selectedDates, day, channel) {
+export function updateSelectedDates(calendarArray, listing, selectedDates, day) {
     const {localDate} = day;
     let newStartDate;
     let newEndDate;

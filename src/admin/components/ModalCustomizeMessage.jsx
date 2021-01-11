@@ -18,7 +18,7 @@ class ModalCustomizeMessage extends Component {
         this.handleReset = this.handleReset.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {show} = this.props;
         const nextShow = nextProps.show;
         if (nextShow && show !== nextShow) {
@@ -124,7 +124,9 @@ class ModalCustomizeMessage extends Component {
                             className="btn btn-outline-primary"
                             onClick={this.handleSubmit}
                         >
-                            {showSpinner && <FaCircleNotch className="fa-spin mr-1" />}
+                            {showSpinner && (
+                                <FaCircleNotch data-testid="spinner" className="fa-spin mr-1" />
+                            )}
                             Save
                         </button>
                     </Modal.Footer>

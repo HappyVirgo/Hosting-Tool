@@ -151,6 +151,13 @@ const Option = props => {
     );
 };
 
+Option.propTypes = {
+    children: PropTypes.elementType.isRequired,
+    data: PropTypes.shape({
+        value: PropTypes.string
+    }).isRequired
+};
+
 SelectMessageTags.propTypes = {
     onSelectedOption: PropTypes.func.isRequired,
     isDisabled: PropTypes.bool.isRequired,

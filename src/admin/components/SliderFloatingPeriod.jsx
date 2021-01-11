@@ -24,7 +24,7 @@ export default class SliderFloatingPeriod extends Component {
         this.handleChangeEndDay = this.handleChangeEndDay.bind(this);
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const {range} = this.props;
         if (range[1] > 365) {
             range[1] = 365;
@@ -32,7 +32,7 @@ export default class SliderFloatingPeriod extends Component {
         this.setState({range});
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {range} = this.state;
         const nextRange = nextProps.range;
         if (
@@ -101,6 +101,7 @@ export default class SliderFloatingPeriod extends Component {
             <div className="row no-gutters">
                 <div className="col-1">
                     <input
+                        aria-label="start date"
                         className="form-control text-center pd-l-5 pd-r-5"
                         type="number"
                         value={startDay}
@@ -123,6 +124,7 @@ export default class SliderFloatingPeriod extends Component {
                 </div>
                 <div className="col-1">
                     <input
+                        aria-label="end date"
                         className="form-control text-center pd-l-5 pd-r-5"
                         type="number"
                         value={endDay}

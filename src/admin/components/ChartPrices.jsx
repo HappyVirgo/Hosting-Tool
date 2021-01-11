@@ -23,7 +23,7 @@ class ChartPrices extends Component {
         this.handleZoomChange = this.handleZoomChange.bind(this);
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const newPrices = [];
         for (let i = 0; i < 365; i += 1) {
             newPrices.push({
@@ -42,7 +42,7 @@ class ChartPrices extends Component {
         });
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {prices, listing, channel} = this.props;
         const nextPrices = nextProps.prices.map(price => {
             let {date, localDate} = price;
@@ -451,28 +451,28 @@ class ChartPrices extends Component {
                     <div className="pricing-overview">
                         <div className="media">
                             <div className="media-body">
-                                <label>Min Price</label>
+                                <label htmlFor="min-price">Min Price</label>
                                 <h4>{minPrice}</h4>
                                 <span>PER NIGHT</span>
                             </div>
                         </div>
                         <div className="media">
                             <div className="media-body">
-                                <label>Max Price</label>
+                                <label htmlFor="max-price">Max Price</label>
                                 <h4>{maxPrice}</h4>
                                 <span>PER NIGHT</span>
                             </div>
                         </div>
                         <div className="media">
                             <div className="media-body">
-                                <label>14 Days</label>
+                                <label htmlFor="14-days">14 Days</label>
                                 <h4>{occupancy14Days}</h4>
                                 <span>OCCUPANCY</span>
                             </div>
                         </div>
                         <div className="media">
                             <div className="media-body">
-                                <label>30 Days</label>
+                                <label htmlFor="30-days">30 Days</label>
                                 <h4>{occupancy30Days}</h4>
                                 <span>OCCUPANCY</span>
                             </div>
