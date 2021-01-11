@@ -9,6 +9,9 @@
         "lint": "eslint ./src --ext .js,.jsx",
         "lint:fix": "eslint ./src --ext .js,.jsx --fix"
     },
+    "jest": {
+        "moduleNameMapper": {
+            "^@/(.*)$": "<rootDir>/src/$1"
     "lint-staged": {
         "./src/**/*.{js,jsx}": [
             "eslint --fix"
@@ -45,6 +48,7 @@
         "date-fns-tz": "^1.0.12",
         "fuse.js": "^6.4.3",
         "gravatar": "^1.8.1",
+        "history": "^5.0.0",
         "http-proxy-middleware": "^1.0.6",
         "is-url": "^1.2.4",
         "phone": "^2.4.17",

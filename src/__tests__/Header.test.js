@@ -122,4 +122,3 @@ describe("NavPricing", () => {
         expect(screen.getByRole("button", {name: /next/i})).toBeInTheDocument();
     });
 });
-
