@@ -1,5 +1,6 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+
 import SelectRuleTypes from "../admin/components/SelectRuleTypes";
 
 const setup = bindings => {

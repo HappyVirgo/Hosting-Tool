@@ -1,5 +1,6 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+
 import SelectLimitEvent from "../admin/components/SelectLimitEvent";
 
 const setup = bindings => {
@@ -44,7 +45,7 @@ test("should call `onSelectedOption` props when select new value", async () => {
 
     expect(queryByText("Guest Checks-In")).toBeInTheDocument();
     expect(props.onSelectedOption).toHaveBeenCalledWith({
-      value: "checkin",
-      label: "Guest Checks-In"
-  });
+        value: "checkin",
+        label: "Guest Checks-In"
+    });
 });

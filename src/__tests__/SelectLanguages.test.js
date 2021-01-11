@@ -1,6 +1,7 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import SelectLanguages from "@/admin/components/SelectLanguages";
+
+import SelectLanguages from "../admin/components/SelectLanguages";
 
 const setup = bindings => {
     const props = {
@@ -20,9 +21,9 @@ const setup = bindings => {
 };
 
 test("should call `onSelectedOption` props when select new language", async () => {
-    const { view, props } = setup();
-    const { container } = view;
-    const { queryByText } = screen;
+    const {view, props} = setup();
+    const {container} = view;
+    const {queryByText} = screen;
 
     fireEvent.keyDown(container.firstChild.firstChild, {key: "ArrowDown"});
     await waitFor(() => queryByText("English"));
@@ -40,18 +41,18 @@ test("should call `onSelectedOption` props when select new language", async () =
     ]);
 });
 
-test('should only select option available', async () => {
+test("should only select option available", async () => {
     const selectedValues = {
         da: "Dansk",
         de: "Deutsch",
         en: "English",
-        fake: "Fake",
-    }
+        fake: "Fake"
+    };
 
     setup({
-        selectedValues,
+        selectedValues
     });
-    const { queryByText } = screen;
+    const {queryByText} = screen;
 
     expect(queryByText("Dansk")).toBeInTheDocument();
     expect(queryByText("Deutsch")).toBeInTheDocument();
@@ -59,12 +60,12 @@ test('should only select option available', async () => {
     expect(queryByText("Fake")).not.toBeInTheDocument();
 });
 
-test('should select first option when it is not multi',async () => {
-    const { view, props } = setup({
-        isMulti: false,
+test("should select first option when it is not multi", async () => {
+    const {view, props} = setup({
+        isMulti: false
     });
-    const { container } = view;
-    const { queryByText } = screen;
+    const {container} = view;
+    const {queryByText} = screen;
 
     fireEvent.keyDown(container.firstChild.firstChild, {key: "ArrowDown"});
     await waitFor(() => queryByText("English"));

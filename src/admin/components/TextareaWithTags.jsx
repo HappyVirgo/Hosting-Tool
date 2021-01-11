@@ -29,7 +29,7 @@ class TextareaWithTags extends Component {
         this.handleLanguageChange = this.handleLanguageChange.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {messages, event, error} = this.props;
         const nextMessages = nextProps.messages;
         const nextEvent = nextProps.event;

@@ -48,14 +48,7 @@
                 }
             }
         ],
-        "jsx-a11y/label-has-for": [
-            "error",
-            {
-                "required": {
-                    "some": ["nesting", "id"]
-                }
-            }
-        ],
+        "jsx-a11y/label-has-for": "off",
         "max-len": [
             "error",
             500,
@@ -66,24 +59,50 @@
                 "ignoreStrings": true
             }
         ],
+        "camelcase": [
+            "error",
+            {
+                "properties": "never",
+                "allow": [
+                    "UNSAFE_componentWillMount",
+                    "UNSAFE_componentWillReceiveProps"
+                ]
+            }
+        ],
         "no-await-in-loop": "off",
         "no-shadow": "off",
         "consistent-return": "off",
         "no-param-reassign": "off",
         "import/order": ["error", {"newlines-between": "always"}],
+        "react/sort-comp": ["error", {
+            "order": [
+                "static-methods",
+                "instance-variables",
+                "lifecycle",
+                "everything-else",
+                "render"
+            ]
+        }],
         "react/jsx-curly-newline": "off",
-        "import/no-unresolved": [
-            "error",
-            {
-              "ignore": [ "@/" ]
-            }
-          ]
+        "react/jsx-props-no-spreading": "off",
+        "react/state-in-constructor": "off",
+        "react/static-property-placement": "off",
+        "react/no-array-index-key": "off",
+        "react/destructuring-assignment": "off"
     },
     "overrides": [
         {
             "files": [ "*.jsx" ],
             "rules": {
                 "no-console": ["warn", { "allow": ["warn", "error"] }]
+            }
+        },
+        {
+            "files": [ "src/__tests__/*.test.+(js|jsx)" ],
+            "rules": {
+                "react/prop-types": "off",
+                "react/jsx-props-no-spreading": "off",
+                "jsx-a11y/control-has-associated-label": "off"
             }
         }
     ]

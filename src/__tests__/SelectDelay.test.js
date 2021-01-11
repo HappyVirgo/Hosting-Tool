@@ -1,6 +1,7 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import SelectDelay from "@/admin/components/SelectDelay";
+
+import SelectDelay from "../admin/components/SelectDelay";
 
 const setup = bindings => {
     const props = {
@@ -44,7 +45,7 @@ test("should call `onSelectedOption` props when select new value", async () => {
 
     expect(queryByText("20 Minutes After")).toBeInTheDocument();
     expect(props.onSelectedOption).toHaveBeenCalledWith({
-      value: 20,
-      label: "20 Minutes After"
-  });
+        value: 20,
+        label: "20 Minutes After"
+    });
 });

@@ -1,5 +1,6 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+
 import {createMemoryHistory} from 'history';
 import {Router} from "react-router-dom";
 import Header from "@/admin/components/Header";
@@ -121,3 +122,4 @@ describe("NavPricing", () => {
         expect(screen.getByRole("button", {name: /next/i})).toBeInTheDocument();
     });
 });
+
