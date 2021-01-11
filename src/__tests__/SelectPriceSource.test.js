@@ -1,5 +1,6 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+
 import SelectPriceSource from "../admin/components/SelectPriceSource";
 
 const setup = bindings => {
@@ -43,12 +44,15 @@ test("should call `onSelectedOption` props when select new option", async () => 
     fireEvent.click(queryByText("Airbnb Smart Prices"));
 
     expect(queryByText("Airbnb Smart Prices")).toBeInTheDocument();
-    expect(props.onSelectedOption).toHaveBeenCalledWith({label: "Airbnb Smart Prices", value: "Airbnb Smart Prices"});
+    expect(props.onSelectedOption).toHaveBeenCalledWith({
+        label: "Airbnb Smart Prices",
+        value: "Airbnb Smart Prices"
+    });
 });
 
 test("should add more options when `includeChannels` is truly", async () => {
     const {view} = setup({
-        includeChannels: true,
+        includeChannels: true
     });
     const {container} = view;
     const {queryByText} = screen;

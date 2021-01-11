@@ -35,8 +35,9 @@ function AddAirbnbAccount(props) {
     const [addAccountVerificationID, setAddAccountVerificationID] = useState(false);
 
     let airbnbUsername = "";
-    if (props.credentials && props.credentials.airbnbUsername) {
-        airbnbUsername = props.credentials.airbnbUsername;
+    const {credentials: propCredentials} = props;
+    if (propCredentials && propCredentials.airbnbUsername) {
+        airbnbUsername = propCredentials.airbnbUsername;
     }
 
     const [credentials, setCredentials] = useState({
