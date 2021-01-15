@@ -2,7 +2,7 @@ import React from "react";
 import {render, screen, fireEvent, waitFor, cleanup} from "@testing-library/react";
 import {BrowserRouter} from "react-router-dom";
 
-import NavMessaging from "@/admin/components/NavMessaging";
+import NavMessaging from "../admin/components/NavMessaging";
 
 const setup = overrides => {
     const props = {

@@ -104,14 +104,8 @@ function AddAirbnbAccount(props) {
                 });
 
                 // eslint-disable-next-line no-undef
-                try {
-                    // wrapped in try/catch since these objects don't exist in the test environment
-                    // this allows the test to run and the errors here to still be caught
-                    __insp.push(["tagSession", "Airbnb Added Event"]);
-                    await updateUser(20);
-                } catch (error) {
-                    console.error("error", error);
-                }
+                __insp.push(["tagSession", "Airbnb Added Event"]);
+                await updateUser(20);
             }
             onHide(isSuccess);
             setInitialState();
@@ -485,7 +479,7 @@ function AddAirbnbAccount(props) {
     });
     if (!addAccountVerificationMethods) {
         return (
-            <form name={"Airbnb Login Form"}>
+            <form>
                 <Modal.Header closeButton={!hideCloseButtons}>
                     <Modal.Title>Link Airbnb Account</Modal.Title>
                 </Modal.Header>
@@ -649,7 +643,7 @@ function AddAirbnbAccount(props) {
     }
     if (addAccountVerificationMethods && !addAccountVerificationCodeSent) {
         return (
-            <form name={"Airbnb Verification Form"}>
+            <form>
                 <Modal.Header closeButton>
                     <Modal.Title>Verify Airbnb Account</Modal.Title>
                 </Modal.Header>

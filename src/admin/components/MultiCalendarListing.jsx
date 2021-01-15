@@ -114,7 +114,7 @@ function MultiCalendarListing(props) {
             }
         }
     }
-    const days = calendarArray.reduce((result, day, i) => {
+    const days = calendarArray.reduce((result, day) => {
         const {isSelected, blocked, localDate, airbnbDate} = day;
         if (isBefore(localDate, subDays(currentDate, 2))) {
             return result;
